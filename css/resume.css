@@ -314,6 +314,51 @@ section.resume-section .resume-item .resume-date {
   box-shadow: 0 10px 30px rgba(15, 118, 110, 0.3);
 }
 
+/* Download CV Button */
+.download-cv-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1.25rem !important;
+  height: 3rem;
+  width: auto !important;
+  background: var(--gradient-accent) !important;
+  color: var(--bg-darker) !important;
+  border-radius: 50px !important;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none !important;
+  transition: all 0.3s ease;
+}
+
+.download-cv-btn i {
+  font-size: 1.1rem;
+}
+
+.download-cv-btn span {
+  white-space: nowrap;
+}
+
+.download-cv-btn:hover {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%) !important;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+  color: var(--bg-darker) !important;
+}
+
+@media (max-width: 576px) {
+  .download-cv-btn {
+    margin-top: 1rem;
+    width: 100% !important;
+    justify-content: center;
+  }
+  
+  .social-icons {
+    flex-wrap: wrap;
+  }
+}
+
 /* Languages Badges */
 .languages-badges {
   margin-top: 1.5rem;
