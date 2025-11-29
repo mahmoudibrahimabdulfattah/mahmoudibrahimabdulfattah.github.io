@@ -560,6 +560,17 @@
 
   </div>
 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <span class="footer-text">© <span id="footer-year"></span> Mahmoud Ibrahim. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/mahmoudibrahimabdulfattah/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/mahmoudibrahimabdulfattah" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -587,6 +598,12 @@
       const expTextElement = document.getElementById('years-exp-text');
       if (expTextElement) {
         expTextElement.textContent = yearsOfExperience + '+';
+      }
+      
+      // Update footer year
+      const footerYear = document.getElementById('footer-year');
+      if (footerYear) {
+        footerYear.textContent = currentYear;
       }
     })();
   </script>
