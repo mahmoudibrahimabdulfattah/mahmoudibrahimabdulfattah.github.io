@@ -1,15 +1,18 @@
 /*!
  * Mahmoud Ibrahim - Professional Resume
- * Modern, Clean Design
+ * Modern, Clean Design with Light/Dark Theme Support
  */
 
-:root {
+/* Dark Theme (Default) */
+:root,
+[data-theme="dark"] {
   --primary: #0f766e;
   --primary-dark: #0d5a54;
   --primary-light: #14b8a6;
   --accent: #f59e0b;
   --bg-dark: #0f172a;
   --bg-darker: #020617;
+  --bg-main: #0f172a;
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
@@ -17,6 +20,26 @@
   --card-border: rgba(148, 163, 184, 0.1);
   --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   --gradient-accent: linear-gradient(135deg, var(--accent) 0%, #fbbf24 100%);
+  --nav-bg: #020617;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --primary: #0f766e;
+  --primary-dark: #0d5a54;
+  --primary-light: #14b8a6;
+  --accent: #d97706;
+  --bg-dark: #f8fafc;
+  --bg-darker: #e2e8f0;
+  --bg-main: #f8fafc;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(15, 23, 42, 0.1);
+  --nav-bg: #0f766e;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -33,6 +56,14 @@ body {
     radial-gradient(at 80% 70%, rgba(245, 158, 11, 0.08) 0px, transparent 50%);
   background-attachment: fixed;
   line-height: 1.7;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="light"] body,
+body[data-theme="light"] {
+  background-image: 
+    radial-gradient(at 20% 30%, rgba(15, 118, 110, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 70%, rgba(245, 158, 11, 0.05) 0px, transparent 50%);
 }
 
 @media (min-width: 992px) {
@@ -111,17 +142,63 @@ p.lead {
   margin-right: 0.5rem;
 }
 
+/* Theme Toggle Floating Button */
+.theme-toggle-float {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: var(--gradient-primary);
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4);
+}
+
+.theme-toggle-float:hover {
+  transform: rotate(20deg) scale(1.1);
+  box-shadow: 0 6px 25px rgba(15, 118, 110, 0.6);
+}
+
+.theme-toggle-float:active {
+  transform: scale(0.95);
+}
+
+[data-theme="light"] .theme-toggle-float {
+  background: var(--gradient-primary);
+  box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3);
+}
+
+@media (max-width: 991px) {
+  .theme-toggle-float {
+    top: 0.75rem;
+    right: 4rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
 /* Navigation */
 #sideNav {
-  background: var(--bg-darker) !important;
+  background: var(--nav-bg) !important;
   border-right: 1px solid var(--card-border);
+  transition: background-color 0.3s ease;
 }
 
 #sideNav .navbar-nav .nav-item .nav-link {
   font-weight: 600;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.7);
   padding: 0.75rem 1rem;
   transition: all 0.3s ease;
   position: relative;
@@ -129,7 +206,16 @@ p.lead {
 
 #sideNav .navbar-nav .nav-item .nav-link:hover,
 #sideNav .navbar-nav .nav-item .nav-link.active {
-  color: var(--primary-light);
+  color: white;
+}
+
+[data-theme="light"] #sideNav .navbar-nav .nav-item .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="light"] #sideNav .navbar-nav .nav-item .nav-link:hover,
+[data-theme="light"] #sideNav .navbar-nav .nav-item .nav-link.active {
+  color: white;
 }
 
 #sideNav .navbar-nav .nav-item .nav-link::before {
@@ -301,6 +387,12 @@ section.resume-section .resume-item .resume-date {
   margin-right: 0.75rem;
   border: 1px solid var(--card-border);
   transition: all 0.3s ease;
+  box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+[data-theme="light"] .social-icons a {
+  background: white;
+  border-color: rgba(15, 118, 110, 0.2);
 }
 
 .social-icons a:last-child {
@@ -383,6 +475,11 @@ section.resume-section .resume-item .resume-date {
   color: var(--primary-light);
 }
 
+[data-theme="light"] .lang-badge {
+  background: white;
+  box-shadow: 0 2px 10px var(--shadow-color);
+}
+
 /* Experience Items */
 .resume-item {
   background: var(--card-bg);
@@ -390,6 +487,12 @@ section.resume-section .resume-item .resume-date {
   border-radius: 16px;
   padding: 2rem;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+[data-theme="light"] .resume-item {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 118, 110, 0.1);
 }
 
 .resume-item:hover {
@@ -510,6 +613,11 @@ section.resume-section .resume-item .resume-date {
   border-color: rgba(15, 118, 110, 0.3);
 }
 
+[data-theme="light"] .skill-category {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
 .skill-category h4 {
   color: var(--text-primary);
   font-size: 1.1rem;
@@ -597,6 +705,15 @@ section.resume-section .resume-item .resume-date {
 
 .project-card:hover::before {
   opacity: 1;
+}
+
+[data-theme="light"] .project-card {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+[data-theme="light"] .project-card.featured {
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.08) 0%, rgba(255, 255, 255, 0.9) 100%);
 }
 
 .project-card.featured {
@@ -726,6 +843,11 @@ section.resume-section .resume-item .resume-date {
   transform: translateX(5px);
 }
 
+[data-theme="light"] .certificate-item {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
 .certificate-item > i {
   color: var(--accent);
   font-size: 1.5rem;
@@ -805,6 +927,11 @@ hr {
   background: var(--bg-darker);
   border-top: 1px solid var(--card-border);
   padding: 2rem 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+[data-theme="light"] .site-footer {
+  background: #e2e8f0;
 }
 
 @media (min-width: 992px) {

@@ -34,7 +34,7 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/resume.css?v=2.0" rel="stylesheet">
+  <link href="css/resume.css?v=6.0" rel="stylesheet">
 
 </head>
 
@@ -576,6 +576,11 @@
 
   </div>
 
+  <!-- Theme Toggle Floating Button -->
+  <button class="theme-toggle-float" id="themeToggle" title="Toggle Theme">
+    <i class="fas fa-sun" id="themeIcon"></i>
+  </button>
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content">
@@ -620,6 +625,39 @@
       const footerYear = document.getElementById('footer-year');
       if (footerYear) {
         footerYear.textContent = currentYear;
+      }
+    })();
+  </script>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    (function() {
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const body = document.body;
+      
+      // Check for saved theme preference or default to dark
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      body.setAttribute('data-theme', savedTheme);
+      updateIcon(savedTheme);
+      
+      themeToggle.addEventListener('click', function() {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcon(newTheme);
+      });
+      
+      function updateIcon(theme) {
+        if (theme === 'dark') {
+          themeIcon.className = 'fas fa-sun';
+          themeToggle.title = 'Switch to Light Mode';
+        } else {
+          themeIcon.className = 'fas fa-moon';
+          themeToggle.title = 'Switch to Dark Mode';
+        }
       }
     })();
   </script>
