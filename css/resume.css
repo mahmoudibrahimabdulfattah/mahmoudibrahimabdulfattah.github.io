@@ -1,5 +1,5 @@
 /*!
- * Mahmoud Ibrahim - Professional Resume
+ * Mahmoud I. Khalil - Professional Resume
  * Modern, Clean Design with Light/Dark Theme Support
  */
 
@@ -321,24 +321,28 @@ section.resume-section .resume-item .resume-date {
 }
 
 /* Badges */
+.badge-primary,
+.years-exp {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border-radius: 50px;
+  vertical-align: middle;
+}
+
 .badge-primary {
   background: var(--gradient-primary);
   color: white;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: 50px;
+  border: 1px solid transparent;
 }
 
 .years-exp {
-  display: inline-block;
   margin-left: 0.75rem;
-  padding: 0.5rem 1rem;
   background: rgba(245, 158, 11, 0.15);
   color: var(--accent);
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
   border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
@@ -593,6 +597,10 @@ section.resume-section .resume-item .resume-date {
   color: var(--primary-light) !important;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
+}
+
+h1 .text-primary {
+  font-size: 1.75rem;
 }
 
 /* Skills Section */
