@@ -336,14 +336,13 @@ section.resume-section .resume-item .resume-date {
 .badge-primary {
   background: var(--gradient-primary);
   color: white;
-  border: 1px solid transparent;
 }
 
 .years-exp {
   margin-left: 0.75rem;
   background: rgba(245, 158, 11, 0.15);
   color: var(--accent);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.3);
 }
 
 /* Contact Info */
