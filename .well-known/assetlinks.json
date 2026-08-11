@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mk.newsshorts",
+      "sha256_cert_fingerprints": [
+        "0E:37:A3:71:4C:4C:01:4D:D7:47:E3:24:EA:E3:8D:44:62:6A:35:A3:D7:F4:C9:FF:28:58:CF:25:1E:A0:84:4F"
+      ]
+    }
+  }
+]
