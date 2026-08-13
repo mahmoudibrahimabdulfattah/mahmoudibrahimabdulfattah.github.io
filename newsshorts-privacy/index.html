@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — News Shorts</title>
 <meta name="description" content="What the News Shorts app collects, what it does not, and how to delete your data.">
+<script>
+  // Runs before the body is parsed, so the page never renders in one language
+  // and then swaps. The app appends ?lang= from its own setting, which is the
+  // authority; a visitor arriving from anywhere else gets their browser's
+  // language, and English if it is neither.
+  (function () {
+    var requested = new URLSearchParams(location.search).get('lang');
+    var browser = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    var lang = (requested || browser) === 'ar' ? 'ar' : 'en';
+    var root = document.documentElement;
+    root.lang = lang;
+    root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    root.className = lang;
+  })();
+</script>
 <style>
   :root {
     --bg: #0D1B2A;
@@ -40,152 +55,154 @@
   h2 { font-size: 1.1rem; margin-top: 0; }
   h3 { font-size: 0.95rem; margin: 20px 0 6px; color: var(--accent); }
   p, li { line-height: 1.7; }
-  ul { padding-left: 1.2em; }
+  ul { padding-inline-start: 1.2em; padding-inline-end: 0; }
   a { color: var(--accent); }
-  code {
-    background: #ffffff14;
-    padding: 2px 6px;
-    border-radius: 6px;
-    font-size: 0.9em;
-  }
-  .lang-divider {
-    border: 0;
-    border-top: 1px solid var(--border);
-    margin: 48px 0 40px;
-  }
-  [dir="rtl"] ul { padding-left: 0; padding-right: 1.2em; }
   footer { color: var(--text-dim); font-size: 0.85rem; margin-top: 32px; }
+  .switch {
+    display: block;
+    margin-top: 24px;
+    font-size: 0.85rem;
+  }
+
+  /* One language at a time. English is the default so that a browser with
+     scripting turned off still shows a readable policy rather than both. */
+  .ar-only { display: none; }
+  html.ar .ar-only { display: block; }
+  html.ar .en-only { display: none; }
 </style>
 </head>
 <body>
 <main>
 
-  <h1>Privacy Policy</h1>
-  <p class="subtitle">News Shorts — Mahmoud Ibrahim Abdul Fattah</p>
-  <p class="updated">Effective 13 August 2026</p>
+  <div class="en-only">
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">News Shorts — Mahmoud Ibrahim Abdul Fattah</p>
+    <p class="updated">Effective 13 August 2026</p>
 
-  <section>
-    <h2>The short version</h2>
-    <p>News Shorts works fully without an account. If you never sign in, nothing
-    you do in the app is tied to your identity, and nothing you save leaves your
-    device. There are no ads, no advertising identifiers, and no third-party
-    trackers. The app does not record which articles you read — not to us, and
-    not to anyone else.</p>
-  </section>
+    <section>
+      <h2>The short version</h2>
+      <p>News Shorts works fully without an account. If you never sign in, nothing
+      you do in the app is tied to your identity, and nothing you save leaves your
+      device. There are no ads, no advertising identifiers, and no third-party
+      trackers. The app does not record which articles you read — not to us, and
+      not to anyone else.</p>
+    </section>
 
-  <section>
-    <h2>What is collected</h2>
+    <section>
+      <h2>What is collected</h2>
 
-    <h3>Your account — only if you choose to sign in</h3>
-    <ul>
-      <li><strong>Signing in with Google:</strong> your name, email address and
-      profile picture, as provided by Google.</li>
-      <li><strong>Signing in with an email link:</strong> your email address,
-      and nothing else. There is no password to store.</li>
-    </ul>
-    <p>This is held by Google Firebase Authentication on our behalf.</p>
+      <h3>Your account — only if you choose to sign in</h3>
+      <ul>
+        <li><strong>Signing in with Google:</strong> your name, email address and
+        profile picture, as provided by Google.</li>
+        <li><strong>Signing in with an email link:</strong> your email address,
+        and nothing else. There is no password to store.</li>
+      </ul>
+      <p>This is held by Google Firebase Authentication on our behalf.</p>
 
-    <h3>Synced data — only while signed in</h3>
-    <ul>
-      <li>Your saved articles.</li>
-      <li>Your settings: app language, news language, country, theme, and
-      notification preferences.</li>
-    </ul>
-    <p>This is stored in Google Cloud Firestore, in a single document belonging
-    to your account, on servers in Dammam, Saudi Arabia. Security rules restrict
-    that document to your account alone — no other user of the app can read it.</p>
+      <h3>Synced data — only while signed in</h3>
+      <ul>
+        <li>Your saved articles.</li>
+        <li>Your settings: app language, news language, country, theme, and
+        notification preferences.</li>
+      </ul>
+      <p>This is stored in Google Cloud Firestore, in a single document belonging
+      to your account, on servers in Dammam, Saudi Arabia. Security rules restrict
+      that document to your account alone — no other user of the app can read it.</p>
 
-    <h3>On your device only</h3>
-    <p>Whether or not you sign in, the app keeps the following in its own private
-    storage on the device, and it is uploaded only if you sign in:</p>
-    <ul>
-      <li>Saved articles, and your settings.</li>
-      <li>Which articles you have already read — stored as numbers derived from
-      the article addresses, not the addresses themselves, so that already-read
-      stories move down the feed.</li>
-      <li>The email address a sign-in link was last sent to, so the link can be
-      completed when you return from your mail app.</li>
-    </ul>
+      <h3>On your device only</h3>
+      <p>Whether or not you sign in, the app keeps the following in its own private
+      storage on the device, and it is uploaded only if you sign in:</p>
+      <ul>
+        <li>Saved articles, and your settings.</li>
+        <li>Which articles you have already read — stored as numbers derived from
+        the article addresses, not the addresses themselves, so that already-read
+        stories move down the feed.</li>
+        <li>The email address a sign-in link was last sent to, so the link can be
+        completed when you return from your mail app.</li>
+      </ul>
 
-    <h3>Usage analytics</h3>
-    <p>Google Firebase Analytics receives events describing how the app is used:
-    the <em>category</em>, <em>publisher name</em> and <em>language</em> of an
-    article that was viewed, skipped, saved or shared; how far down the feed you
-    scrolled; the country feed you chose; and when a feed fails to load.</p>
-    <p><strong>Article addresses and headlines are never sent.</strong> These
-    events are not linked to your account, and they are not enough to reconstruct
-    what you read.</p>
+      <h3>Usage analytics</h3>
+      <p>Google Firebase Analytics receives events describing how the app is used:
+      the <em>category</em>, <em>publisher name</em> and <em>language</em> of an
+      article that was viewed, skipped, saved or shared; how far down the feed you
+      scrolled; the country feed you chose; and when a feed fails to load.</p>
+      <p><strong>Article addresses and headlines are never sent.</strong> These
+      events are not linked to your account, and they are not enough to reconstruct
+      what you read.</p>
 
-    <h3>Crash reports</h3>
-    <p>If the app crashes, Google Firebase Crashlytics receives the device model,
-    operating system version, and the point in the code where the crash happened.</p>
+      <h3>Crash reports</h3>
+      <p>If the app crashes, Google Firebase Crashlytics receives the device model,
+      operating system version, and the point in the code where the crash happened.</p>
 
-    <h3>Notifications</h3>
-    <p>If you allow notifications, Google Firebase Cloud Messaging holds a token
-    identifying this installation, so that a notification can reach it. You can
-    turn notifications off entirely, or per type, in Settings.</p>
-  </section>
+      <h3>Notifications</h3>
+      <p>If you allow notifications, Google Firebase Cloud Messaging holds a token
+      identifying this installation, so that a notification can reach it. You can
+      turn notifications off entirely, or per type, in Settings.</p>
+    </section>
 
-  <section>
-    <h2>What is not collected</h2>
-    <ul>
-      <li>No advertising identifiers, ad networks or third-party trackers.</li>
-      <li>Nothing is sold or shared with advertisers or data brokers.</li>
-      <li>No access to contacts, location, photos, files or the microphone.</li>
-      <li>No record of which specific articles you read.</li>
-    </ul>
-  </section>
+    <section>
+      <h2>What is not collected</h2>
+      <ul>
+        <li>No advertising identifiers, ad networks or third-party trackers.</li>
+        <li>Nothing is sold or shared with advertisers or data brokers.</li>
+        <li>No access to contacts, location, photos, files or the microphone.</li>
+        <li>No record of which specific articles you read.</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>News content</h2>
-    <p>Headlines and summaries come from news publishers' public RSS feeds and
-    are summarised using Google Gemini. Opening the full story opens the
-    publisher's own website, where that publisher's privacy policy applies
-    instead of this one. News Shorts is not affiliated with the publishers it
-    summarises.</p>
-  </section>
+    <section>
+      <h2>News content</h2>
+      <p>Headlines and summaries come from news publishers' public RSS feeds and
+      are summarised using Google Gemini. Opening the full story opens the
+      publisher's own website, where that publisher's privacy policy applies
+      instead of this one. News Shorts is not affiliated with the publishers it
+      summarises.</p>
+    </section>
 
-  <section>
-    <h2>Your choices</h2>
-    <ul>
-      <li><strong>Use the app without an account.</strong> Every screen works for
-      a guest; signing in only adds syncing across devices.</li>
-      <li><strong>Turn notifications off</strong> in Settings, all of them or by
-      type.</li>
-      <li><strong>Sign out</strong> at any time. Articles saved on the device
-      stay on the device.</li>
-      <li><strong>Delete your account and everything synced to it</strong> —
-      see <a href="../newsshorts-delete-account/">deleting your account</a>.</li>
-    </ul>
-  </section>
+    <section>
+      <h2>Your choices</h2>
+      <ul>
+        <li><strong>Use the app without an account.</strong> Every screen works for
+        a guest; signing in only adds syncing across devices.</li>
+        <li><strong>Turn notifications off</strong> in Settings, all of them or by
+        type.</li>
+        <li><strong>Sign out</strong> at any time. Articles saved on the device
+        stay on the device.</li>
+        <li><strong>Delete your account and everything synced to it</strong> —
+        see <a href="../newsshorts-delete-account/">deleting your account</a>.</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Who else is involved</h2>
-    <p>The services above are all provided by Google (Firebase Authentication,
-    Cloud Firestore, Analytics, Crashlytics and Cloud Messaging), and are subject
-    to <a href="https://policies.google.com/privacy" rel="noopener">Google's
-    privacy policy</a>. Article summaries are published as static files on GitHub
-    Pages, which receives the usual web-server request information when the app
-    fetches them.</p>
-  </section>
+    <section>
+      <h2>Who else is involved</h2>
+      <p>The services above are all provided by Google (Firebase Authentication,
+      Cloud Firestore, Analytics, Crashlytics and Cloud Messaging), and are subject
+      to <a href="https://policies.google.com/privacy" rel="noopener">Google's
+      privacy policy</a>. Article summaries are published as static files on GitHub
+      Pages, which receives the usual web-server request information when the app
+      fetches them.</p>
+    </section>
 
-  <section>
-    <h2>Children</h2>
-    <p>News Shorts is a general news reader and is not directed at children under
-    13. No account should be created for a child under 13.</p>
-  </section>
+    <section>
+      <h2>Children</h2>
+      <p>News Shorts is a general news reader and is not directed at children under
+      13. No account should be created for a child under 13.</p>
+    </section>
 
-  <section>
-    <h2>Changes, and how to reach us</h2>
-    <p>If this policy changes, the effective date above changes with it, and the
-    updated version appears at this address.</p>
-    <p>Questions, requests about your data, or anything else:
-    <a href="mailto:mahmoudibrahimabdulfattah@gmail.com?subject=News%20Shorts%20privacy">mahmoudibrahimabdulfattah@gmail.com</a>.</p>
-  </section>
+    <section>
+      <h2>Changes, and how to reach us</h2>
+      <p>If this policy changes, the effective date above changes with it, and the
+      updated version appears at this address.</p>
+      <p>Questions, requests about your data, or anything else:
+      <a href="mailto:mahmoudibrahimabdulfattah@gmail.com?subject=News%20Shorts%20privacy">mahmoudibrahimabdulfattah@gmail.com</a>.</p>
+    </section>
 
-  <hr class="lang-divider">
+    <a class="switch" href="?lang=ar">العربية</a>
+    <footer>News Shorts is not affiliated with the news sources it summarizes.</footer>
+  </div>
 
-  <div dir="rtl" lang="ar">
+  <div class="ar-only">
     <h1>سياسة الخصوصية</h1>
     <p class="subtitle">News Shorts — محمود إبراهيم عبد الفتاح</p>
     <p class="updated">سارية اعتباراً من 13 أغسطس 2026</p>
@@ -304,9 +321,11 @@
       <p>لأي سؤال أو طلب يخصّ بياناتك:
       <a href="mailto:mahmoudibrahimabdulfattah@gmail.com?subject=News%20Shorts%20privacy">mahmoudibrahimabdulfattah@gmail.com</a>.</p>
     </section>
+
+    <a class="switch" href="?lang=en">English</a>
+    <footer>News Shorts غير تابع لمصادر الأخبار التي يلخّصها.</footer>
   </div>
 
-  <footer>News Shorts is not affiliated with the news sources it summarizes.</footer>
 </main>
 </body>
 </html>
