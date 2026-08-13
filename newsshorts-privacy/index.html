@@ -18,6 +18,13 @@
     root.lang = lang;
     root.dir = lang === 'ar' ? 'rtl' : 'ltr';
     root.className = lang;
+    // The browser tab is the one piece of the page that is not in the body,
+    // so it would otherwise stay English behind an Arabic policy.
+    if (lang === 'ar') {
+      document.addEventListener('DOMContentLoaded', function () {
+        document.title = 'سياسة الخصوصية — News Shorts';
+      });
+    }
   })();
 </script>
 <style>
