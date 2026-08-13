@@ -5,6 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Delete your News Shorts account — News Shorts</title>
 <meta name="description" content="How to delete your News Shorts account and data.">
+<script>
+  // Matches the privacy policy: the app appends ?lang= from its own setting,
+  // and a visitor arriving from anywhere else gets their browser's language.
+  // Runs before the body is parsed so the page never renders twice.
+  (function () {
+    var requested = new URLSearchParams(location.search).get('lang');
+    var browser = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    var lang = (requested || browser) === 'ar' ? 'ar' : 'en';
+    var root = document.documentElement;
+    root.lang = lang;
+    root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    root.className = lang;
+    if (lang === 'ar') {
+      document.addEventListener('DOMContentLoaded', function () {
+        document.title = 'حذف حساب News Shorts';
+      });
+    }
+  })();
+</script>
 <style>
   :root {
     --bg: #0D1B2A;
@@ -50,9 +69,11 @@
     margin-top: 0;
   }
   ol, ul {
-    padding-left: 1.2em;
+    padding-inline-start: 1.2em;
+    padding-inline-end: 0;
     line-height: 1.7;
   }
+  p { line-height: 1.7; }
   a {
     color: var(--accent);
   }
@@ -62,53 +83,114 @@
     border-radius: 6px;
     font-size: 0.9em;
   }
+  .switch {
+    display: block;
+    margin-top: 24px;
+    font-size: 0.85rem;
+  }
   footer {
     color: var(--text-dim);
     font-size: 0.85rem;
     margin-top: 32px;
   }
+
+  /* One language at a time. English is the default so a browser with
+     scripting off still shows readable instructions rather than both. */
+  .ar-only { display: none; }
+  html.ar .ar-only { display: block; }
+  html.ar .en-only { display: none; }
 </style>
 </head>
 <body>
 <main>
-  <h1>Delete your News Shorts account</h1>
-  <p class="subtitle">News Shorts — Mahmoud Ibrahim Abdul Fattah</p>
 
-  <section>
-    <h2>In the app</h2>
-    <p>The fastest way, and it works without contacting anyone:</p>
-    <ol>
-      <li>Open News Shorts and go to the <strong>Profile</strong> tab.</li>
-      <li>Tap <strong>Settings</strong>.</li>
-      <li>Under <strong>Account</strong>, tap <strong>Delete account</strong> and confirm.</li>
-    </ol>
-    <p>This removes your account and everything synced to it — your saved
-    articles and preferences on Google's Firebase servers. It happens
-    immediately.</p>
-    <p>Articles saved on the device itself are not touched: they are local to
-    that device and were never tied to the account, so deleting the account
-    does not remove them. Uninstalling the app removes them along with
-    everything else on that device.</p>
-  </section>
+  <div class="en-only">
+    <h1>Delete your News Shorts account</h1>
+    <p class="subtitle">News Shorts — Mahmoud Ibrahim Abdul Fattah</p>
 
-  <section>
-    <h2>No access to the app</h2>
-    <p>If you can't open the app — a lost device, an uninstalled app, or any
-    other reason — email
-    <a href="mailto:mahmoudibrahimabdulfattah@gmail.com?subject=News%20Shorts%20account%20deletion">mahmoudibrahimabdulfattah@gmail.com</a>
-    from the address you signed in with, or with your account's Google or
-    email address, and ask for your News Shorts account to be deleted.
-    Requests are handled within 30 days.</p>
-  </section>
+    <section>
+      <h2>In the app</h2>
+      <p>The fastest way, and it works without contacting anyone:</p>
+      <ol>
+        <li>Open News Shorts and go to the <strong>Profile</strong> tab.</li>
+        <li>Tap <strong>Settings</strong>.</li>
+        <li>Under <strong>Account</strong>, tap <strong>Delete account</strong> and confirm.</li>
+      </ol>
+      <p>This removes your account and everything synced to it — your saved
+      articles and preferences on Google's Firebase servers. It happens
+      immediately.</p>
+      <p>Articles saved on the device itself are not touched: they are local to
+      that device and were never tied to the account, so deleting the account
+      does not remove them. Uninstalling the app removes them along with
+      everything else on that device.</p>
+    </section>
 
-  <section>
-    <h2>What gets deleted</h2>
-    <p>Your account, and the document synced to it: saved articles and app
-    settings (language, theme, notification preferences). Analytics and crash
-    reports are already anonymized and are not tied to your account.</p>
-  </section>
+    <section>
+      <h2>No access to the app</h2>
+      <p>If you can't open the app — a lost device, an uninstalled app, or any
+      other reason — email
+      <a href="mailto:mahmoudibrahimabdulfattah@gmail.com?subject=News%20Shorts%20account%20deletion">mahmoudibrahimabdulfattah@gmail.com</a>
+      from the address you signed in with, or with your account's Google or
+      email address, and ask for your News Shorts account to be deleted.
+      Requests are handled within 30 days.</p>
+    </section>
 
-  <footer>News Shorts is not affiliated with the news sources it summarizes.</footer>
+    <section>
+      <h2>What gets deleted</h2>
+      <p>Your account, and the document synced to it: saved articles and app
+      settings (language, theme, notification preferences). Analytics and crash
+      reports are already anonymized and are not tied to your account.</p>
+      <p>What the app collects in the first place is set out in the
+      <a href="../newsshorts-privacy/?lang=en">privacy policy</a>.</p>
+    </section>
+
+    <a class="switch" href="?lang=ar">العربية</a>
+    <footer>News Shorts is not affiliated with the news sources it summarizes.</footer>
+  </div>
+
+  <div class="ar-only">
+    <h1>حذف حساب News Shorts</h1>
+    <p class="subtitle">News Shorts — محمود إبراهيم عبد الفتاح</p>
+
+    <section>
+      <h2>من داخل التطبيق</h2>
+      <p>أسرع طريقة، ولا تحتاج إلى مراسلة أحد:</p>
+      <ol>
+        <li>افتح News Shorts واذهب إلى تبويب <strong>الملف الشخصي</strong>.</li>
+        <li>اضغط <strong>الإعدادات</strong>.</li>
+        <li>ضمن قسم <strong>الحساب</strong>، اضغط <strong>حذف الحساب</strong>
+        ثم أكّد.</li>
+      </ol>
+      <p>يؤدي هذا إلى حذف حسابك وكل ما تزامن معه — مقالاتك المحفوظة وتفضيلاتك
+      على خوادم Firebase التابعة لـ Google. ويحدث ذلك فوراً.</p>
+      <p>أما المقالات المحفوظة على الجهاز نفسه فلا تُمَس: فهي محليّة على ذلك
+      الجهاز ولم ترتبط بالحساب أصلاً، ولذلك لا يحذفها حذف الحساب. وإلغاء تثبيت
+      التطبيق يزيلها مع كل شيء آخر على ذلك الجهاز.</p>
+    </section>
+
+    <section>
+      <h2>إذا تعذّر عليك فتح التطبيق</h2>
+      <p>إذا لم تستطع فتح التطبيق — لفقدان الجهاز أو إلغاء تثبيت التطبيق أو لأي
+      سبب آخر — راسلنا على
+      <a href="mailto:mahmoudibrahimabdulfattah@gmail.com?subject=News%20Shorts%20account%20deletion">mahmoudibrahimabdulfattah@gmail.com</a>
+      من البريد الذي سجّلت الدخول به، أو مع ذكر بريد حسابك أو حساب Google
+      المرتبط به، واطلب حذف حسابك في News Shorts. وتُنفَّذ الطلبات خلال 30
+      يوماً.</p>
+    </section>
+
+    <section>
+      <h2>ما الذي يُحذف</h2>
+      <p>حسابك، والمستند المتزامن معه: المقالات المحفوظة وإعدادات التطبيق
+      (اللغة والمظهر وتفضيلات الإشعارات). أما التحليلات وتقارير الأعطال فهي
+      مجهولة المصدر أصلاً وغير مرتبطة بحسابك.</p>
+      <p>وما يجمعه التطبيق من الأساس موضّح في
+      <a href="../newsshorts-privacy/?lang=ar">سياسة الخصوصية</a>.</p>
+    </section>
+
+    <a class="switch" href="?lang=en">English</a>
+    <footer>News Shorts غير تابع لمصادر الأخبار التي يلخّصها.</footer>
+  </div>
+
 </main>
 </body>
 </html>
