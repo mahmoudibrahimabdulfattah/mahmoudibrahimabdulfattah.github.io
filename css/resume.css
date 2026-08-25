@@ -133,6 +133,21 @@ img {
   max-width: 100%;
 }
 
+.icon {
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  color: currentColor;
+}
+
+.icon path,
+.icon circle,
+.icon rect,
+.icon line,
+.icon polyline {
+  vector-effect: non-scaling-stroke;
+}
+
 h1, h2, h3, p {
   margin-top: 0;
 }
@@ -492,13 +507,11 @@ h3 {
 .proof-row > div:first-child { padding-inline-start: 0; }
 .proof-row > div:last-child { border-inline-end: 0; }
 
-.proof-row i {
+.proof-row .icon {
   width: 22px;
+  height: 22px;
   flex: 0 0 22px;
   color: var(--blue);
-  font-size: 22px;
-  line-height: 1;
-  text-align: center;
 }
 
 .proof-row span,
@@ -568,8 +581,9 @@ h3 {
   font-weight: 700;
 }
 
-.device-label i {
-  font-size: 1.15rem;
+.device-label .icon {
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .phone {
@@ -646,8 +660,9 @@ h3 {
   font-weight: 800;
 }
 
-.app-title i {
-  font-size: 11px;
+.app-title .icon {
+  width: 11px;
+  height: 11px;
 }
 
 .focus-panel {
@@ -673,15 +688,17 @@ h3 {
   font-size: 16px;
 }
 
-.focus-panel button {
+.focus-panel .mock-button {
   min-width: 54px;
   padding: var(--space-xs) 10px;
+  display: inline-block;
   color: var(--blue);
   background: #edf3ff;
   border: 1px solid #c9d9ff;
   border-radius: 5px;
   font-size: 8px;
   font-weight: 700;
+  text-align: center;
 }
 
 .progress-ring {
@@ -748,10 +765,10 @@ h3 {
 .app-nav {
   padding-top: var(--space-md);
   color: #667085;
-  font-size: 10px;
+  font-size: 7px;
 }
 
-.app-nav i:first-child {
+.app-nav span:first-child {
   color: var(--blue);
 }
 
@@ -979,17 +996,10 @@ h3 {
   font-weight: 700;
 }
 
-.skill-logo,
-.skill-fa {
+.skill-logo {
   width: 20px;
   height: 20px;
   flex: 0 0 20px;
-}
-
-.skill-fa {
-  display: grid;
-  place-items: center;
-  font-size: 1.15rem;
 }
 
 .skill-apple { color: var(--ink); }
@@ -1104,7 +1114,7 @@ h3 {
   .app-title { margin-bottom: var(--space-md); font-size: 11px; }
   .focus-panel { min-height: 86px; margin-bottom: 13px; padding: 10px; }
   .focus-panel strong { font-size: 13px; }
-  .focus-panel button { min-width: 42px; font-size: 6px; }
+  .focus-panel .mock-button { min-width: 42px; font-size: 6px; }
   .progress-ring { top: 18px; right: 10px; width: 41px; height: 41px; border-width: 5px; }
   .task-list { gap: 7px; font-size: 6px; }
   .task-list strong { font-size: 8px; }
@@ -1173,11 +1183,8 @@ h3 {
 
 .process-icon {
   width: 62px;
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
+  height: 62px;
   color: var(--blue);
-  font-size: 2.65rem;
 }
 
 .process-list h3 {
@@ -1268,13 +1275,10 @@ h3 {
   border-right: 0;
 }
 
-.expertise-columns i {
+.expertise-columns .icon {
   width: 42px;
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
+  height: 42px;
   color: var(--blue);
-  font-size: 1.5rem;
 }
 
 .expertise-columns h3 {
@@ -1728,10 +1732,10 @@ h3 {
 
   .proof-row > div:nth-child(odd) { padding-inline: 0 12px; }
 
-  .proof-row i {
+  .proof-row .icon {
     width: 18px;
+    height: 18px;
     flex-basis: 18px;
-    font-size: 18px;
   }
 
   .device-stage {
@@ -1758,7 +1762,7 @@ h3 {
   .focus-panel { min-height: 70px; margin-bottom: 12px; padding: 8px; }
   .focus-panel strong { font-size: 11px; }
   .progress-ring { width: 34px; height: 34px; top: 17px; right: 8px; border-width: 4px; }
-  .focus-panel button { min-width: 34px; font-size: 6px; }
+  .focus-panel .mock-button { min-width: 34px; font-size: 6px; }
   .task-list { gap: 6px; font-size: 6px; }
   .task-list strong { font-size: 7px; }
   .activity-bars { height: 28px; gap: 5px; }
@@ -1793,7 +1797,7 @@ h3 {
 
   .process-icon {
     width: 42px;
-    font-size: 1.8rem;
+    height: 42px;
   }
 
   .featured-work-panel { padding: 16px; }
