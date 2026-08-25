@@ -25,7 +25,7 @@
   --type-display-weight: 700;
   --type-display-line-height: 1.12;
   --type-display-letter-spacing: -.025em;
-  --type-section: clamp(2.1rem, 3.2vw, 3.5rem);
+  --type-section: clamp(1.375rem, calc(1.125rem + .625vw), 1.625rem);
   --type-section-weight: 700;
   --type-section-line-height: 1.12;
   --type-section-letter-spacing: -.025em;
@@ -446,8 +446,8 @@ h3 {
   max-width: 58ch;
   margin-bottom: 32px;
   color: var(--ink-soft);
-  font-size: clamp(1.08rem, 1.55vw, 1.34rem);
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 30px;
 }
 
 .hero-actions {
@@ -779,7 +779,7 @@ h3 {
 .section {
   width: var(--page);
   margin-inline: auto;
-  padding-block: clamp(90px, 9vw, 144px);
+  padding-block: 88px;
   border-top: 1px solid var(--line-soft);
 }
 
@@ -849,7 +849,7 @@ h3 {
 
 .work-panel-heading h2 {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: var(--type-section);
 }
 
 .featured-work {
@@ -1095,7 +1095,7 @@ h3 {
 }
 
 @media (min-width: 1181px) {
-  .header-inner { min-height: 62px; }
+  .header-inner { min-height: 70px; }
 
   .hero {
     min-height: 547px;
@@ -1125,8 +1125,8 @@ h3 {
 
   .hero-lede {
     margin-bottom: 22px;
-    font-size: .98rem;
-    line-height: 1.55;
+    font-size: 18px;
+    line-height: 30px;
   }
 
   .button {
@@ -1206,7 +1206,7 @@ h3 {
   }
 
   .work-panel-heading h2 {
-    font-size: 1.05rem;
+    font-size: var(--type-section);
   }
 
   .section-work .text-link {
@@ -1243,7 +1243,7 @@ h3 {
     padding-inline: 34px;
   }
 
-  .skills-title { margin-bottom: 3px; font-size: .9rem; }
+  .skills-title { margin-bottom: 3px; font-size: 19px; }
 
   .work-skill-shelf {
     padding-block: 7px;
@@ -1501,7 +1501,7 @@ h3 {
 
 .contact-strip h2 {
   margin-bottom: 10px;
-  font-size: clamp(1.55rem, 2.2vw, 2.25rem);
+  font-size: var(--type-section);
 }
 
 .contact-strip p {
@@ -1699,7 +1699,7 @@ h3 {
     letter-spacing: -.035em;
   }
 
-  h2 { font-size: clamp(2rem, 10vw, 3rem); }
+  h2 { font-size: var(--type-section); }
 
   .brand-mark { width: 38px; height: 26px; }
 
