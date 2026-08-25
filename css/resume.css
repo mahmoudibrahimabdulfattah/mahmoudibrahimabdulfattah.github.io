@@ -2,6 +2,7 @@
   --blue: #155eef;
   --blue-dark: #004eeb;
   --blue-soft: #eff4ff;
+  --night-signal-soft: #b2ccff;
   --action: #155eef;
   --action-hover: #004eeb;
   --action-ink: #ffffff;
@@ -20,8 +21,29 @@
   --green: #17b26a;
   --orange: #f97316;
   --violet: #7f56d9;
+  --type-display: clamp(2.35rem, 2.85vw, 2.75rem);
+  --type-display-weight: 700;
+  --type-display-line-height: 1.12;
+  --type-display-letter-spacing: -.025em;
+  --type-section: clamp(2.1rem, 3.2vw, 3.5rem);
+  --type-section-weight: 700;
+  --type-section-line-height: 1.12;
+  --type-section-letter-spacing: -.025em;
+  --type-body: 16px;
+  --type-body-weight: 400;
+  --type-body-line-height: 1.65;
+  --type-body-letter-spacing: normal;
+  --type-label: 12px;
+  --type-label-weight: 700;
+  --type-label-line-height: 1.35;
+  --type-label-letter-spacing: .1em;
   --radius: 10px;
   --radius-small: 8px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 20px;
+  --space-xl: 28px;
   --page: min(100% - 48px, 1466px);
   --ease: cubic-bezier(.16, 1, .3, 1);
 }
@@ -62,8 +84,10 @@ body {
   color: var(--ink);
   background: var(--surface);
   font-family: "Manrope", sans-serif;
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: var(--type-body);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-line-height);
+  letter-spacing: var(--type-body-letter-spacing);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   transition: color .25s var(--ease), background-color .25s var(--ease);
@@ -113,29 +137,30 @@ h1, h2, h3, p {
   margin-top: 0;
 }
 
-h1, h2, h3 {
-  line-height: 1.12;
-  letter-spacing: -.025em;
-}
-
 h1 {
   max-width: 12ch;
-  margin-bottom: 28px;
+  margin-bottom: var(--space-xl);
   font-size: clamp(3rem, 5.15vw, 5.25rem);
-  font-weight: 700;
+  font-weight: var(--type-display-weight);
+  line-height: var(--type-display-line-height);
+  letter-spacing: var(--type-display-letter-spacing);
 }
 
 .hero h1 span { display: block; }
 
 h2 {
   margin-bottom: 18px;
-  font-size: clamp(2.1rem, 3.2vw, 3.5rem);
-  font-weight: 700;
+  font-size: var(--type-section);
+  font-weight: var(--type-section-weight);
+  line-height: var(--type-section-line-height);
+  letter-spacing: var(--type-section-letter-spacing);
 }
 
 h3 {
   font-size: 1.12rem;
   font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -.025em;
 }
 
 .sr-only {
@@ -153,8 +178,8 @@ h3 {
 .skip-link {
   position: fixed;
   z-index: 1000;
-  top: 12px;
-  left: 12px;
+  top: var(--space-md);
+  left: var(--space-md);
   padding: 10px 14px;
   color: var(--surface);
   background: var(--ink);
@@ -223,7 +248,7 @@ h3 {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-xs);
 }
 
 .theme-toggle {
@@ -381,7 +406,7 @@ h3 {
   display: grid;
   grid-template-columns: 176px minmax(0, 1fr);
   align-items: center;
-  gap: clamp(28px, 3vw, 46px);
+  gap: clamp(var(--space-xl), 3vw, 46px);
 }
 
 .identity-line {
@@ -428,7 +453,7 @@ h3 {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--space-md);
 }
 
 .proof-row {
@@ -436,7 +461,7 @@ h3 {
   padding-top: 22px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  gap: var(--space-md);
   border-top: 0;
 }
 
@@ -504,7 +529,7 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-md);
 }
 
 .device-proof-android {
@@ -518,7 +543,7 @@ h3 {
 .device-label {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-sm);
   font-size: .92rem;
   font-weight: 700;
 }
@@ -572,7 +597,7 @@ h3 {
 
 .phone-screen {
   height: 100%;
-  padding: 22px 12px 11px;
+  padding: 22px var(--space-md) 11px;
   display: flex;
   flex-direction: column;
   color: #151a22;
@@ -590,7 +615,7 @@ h3 {
 }
 
 .app-status {
-  margin-bottom: 20px;
+  margin-bottom: var(--space-lg);
   font-size: 7px;
   font-weight: 800;
 }
@@ -630,7 +655,7 @@ h3 {
 
 .focus-panel button {
   min-width: 54px;
-  padding: 4px 10px;
+  padding: var(--space-xs) 10px;
   color: var(--blue);
   background: #edf3ff;
   border: 1px solid #c9d9ff;
@@ -667,7 +692,7 @@ h3 {
 .task-list span {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-sm);
 }
 
 .task-list i {
@@ -701,7 +726,7 @@ h3 {
 .activity-bars i:nth-child(5) { height: 58%; }
 
 .app-nav {
-  padding-top: 12px;
+  padding-top: var(--space-md);
   color: #667085;
   font-size: 10px;
 }
@@ -720,7 +745,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: var(--space-md);
   text-align: center;
   background: var(--card);
   border: 1px solid var(--line);
@@ -797,7 +822,7 @@ h3 {
 .text-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-sm);
   color: var(--blue);
   text-decoration-thickness: 1px;
   text-underline-offset: 5px;
@@ -809,7 +834,7 @@ h3 {
 }
 
 .featured-work-panel {
-  padding: 20px 24px 24px;
+  padding: var(--space-lg) 24px 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
@@ -919,12 +944,12 @@ h3 {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-sm);
   list-style: none;
 }
 
 .tag-list li {
-  padding: 4px 8px;
+  padding: var(--space-xs) var(--space-sm);
   color: var(--ink-soft);
   background: var(--surface-soft);
   border-radius: 6px;
@@ -937,7 +962,7 @@ h3 {
 }
 
 .skills-title {
-  margin: 0 0 8px;
+  margin: 0 0 var(--space-sm);
   font-size: 1.05rem;
 }
 
@@ -951,7 +976,7 @@ h3 {
 .work-skill-shelf span {
   min-height: 34px;
   flex: 1 1 auto;
-  padding: 4px 18px;
+  padding: var(--space-xs) 18px;
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -1093,7 +1118,7 @@ h3 {
   .hero h1 {
     max-width: none;
     margin-bottom: 18px;
-    font-size: clamp(2.35rem, 2.85vw, 2.75rem);
+    font-size: var(--type-display);
   }
 
   .role-line { margin-bottom: 14px; }
@@ -1115,7 +1140,7 @@ h3 {
   }
 
   .proof-row > div + div {
-    padding-left: 12px;
+    padding-left: var(--space-md);
     border-left: 1px solid var(--line);
   }
 
@@ -1143,7 +1168,7 @@ h3 {
   .phone-camera { top: 13px; }
   .phone-camera-ios { width: 52px; height: 17px; }
   .app-status { margin-bottom: 13px; }
-  .app-title { margin-bottom: 12px; font-size: 11px; }
+  .app-title { margin-bottom: var(--space-md); font-size: 11px; }
   .focus-panel { min-height: 86px; margin-bottom: 13px; padding: 10px; }
   .focus-panel strong { font-size: 13px; }
   .focus-panel button { min-width: 42px; font-size: 6px; }
@@ -1151,13 +1176,13 @@ h3 {
   .task-list { gap: 7px; font-size: 6px; }
   .task-list strong { font-size: 8px; }
   .activity-bars { height: 34px; gap: 7px; }
-  .app-nav { padding-top: 8px; font-size: 7px; }
+  .app-nav { padding-top: var(--space-sm); font-size: 7px; }
   .device-label { font-size: .76rem; }
 
   .shared-core {
     width: 84px;
     min-height: 104px;
-    padding: 12px 6px;
+    padding: var(--space-md) 6px;
     gap: 6px;
   }
 
@@ -1168,12 +1193,12 @@ h3 {
   .concept-note { display: none; }
 
   .section-work {
-    padding-block: 0 4px;
+    padding-block: 0 var(--space-xs);
     border-top: 0;
   }
 
   .featured-work-panel {
-    padding: 20px 34px 10px;
+    padding: var(--space-lg) 34px 10px;
   }
 
   .work-panel-heading {
@@ -1190,7 +1215,7 @@ h3 {
 
   .work-item {
     min-height: 154px;
-    padding: 12px;
+    padding: var(--space-md);
     display: grid;
     grid-template-columns: 96px minmax(0, 1fr);
     align-items: center;
@@ -1227,7 +1252,7 @@ h3 {
 
   .work-skill-shelf span {
     min-width: 0;
-    padding: 2px clamp(8px, 1vw, 15px);
+    padding: 2px clamp(var(--space-sm), 1vw, 15px);
     font-size: .61rem;
     white-space: nowrap;
   }
@@ -1282,7 +1307,7 @@ h3 {
 }
 
 .process-list h3 {
-  margin-bottom: 12px;
+  margin-bottom: var(--space-md);
   font-size: 1.35rem;
 }
 
@@ -1319,7 +1344,7 @@ h3 {
 }
 
 .experience-item h3 {
-  margin-bottom: 12px;
+  margin-bottom: var(--space-md);
   font-size: 1.22rem;
 }
 
@@ -1346,12 +1371,12 @@ h3 {
 
 .expertise-columns article {
   min-height: 250px;
-  padding: 36px clamp(20px, 2.5vw, 38px) 36px 0;
+  padding: 36px clamp(var(--space-lg), 2.5vw, 38px) 36px 0;
   border-right: 1px solid var(--line);
 }
 
 .expertise-columns article + article {
-  padding-left: clamp(20px, 2.5vw, 38px);
+  padding-left: clamp(var(--space-lg), 2.5vw, 38px);
 }
 
 .expertise-columns article:last-child {
@@ -1366,7 +1391,7 @@ h3 {
 }
 
 .expertise-columns h3 {
-  margin-bottom: 12px;
+  margin-bottom: var(--space-md);
 }
 
 .expertise-columns p {
@@ -1384,7 +1409,7 @@ h3 {
 }
 
 .skill-line span {
-  padding-inline: 20px;
+  padding-inline: var(--space-lg);
   color: var(--ink-soft);
   border-right: 1px solid var(--line);
   font-size: .8rem;
@@ -1414,7 +1439,7 @@ h3 {
 
 .about-links {
   display: flex;
-  gap: 28px;
+  gap: var(--space-xl);
 }
 
 .credentials {
@@ -1452,19 +1477,19 @@ h3 {
 }
 
 .credentials ul {
-  margin: 20px 0 0;
-  padding-left: 20px;
+  margin: var(--space-lg) 0 0;
+  padding-left: var(--space-lg);
   color: var(--ink-soft);
 }
 
 .credentials li + li {
-  margin-top: 8px;
+  margin-top: var(--space-sm);
 }
 
 .contact-strip {
   width: var(--page);
   margin: 0 auto 30px;
-  padding: clamp(28px, 4vw, 54px);
+  padding: clamp(var(--space-xl), 4vw, 54px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1488,7 +1513,7 @@ h3 {
 .contact-actions {
   flex: 0 0 auto;
   display: flex;
-  gap: 12px;
+  gap: var(--space-md);
 }
 
 .site-footer {
@@ -1577,7 +1602,7 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 4px;
+    gap: var(--space-xs);
     color: var(--ink);
     background: var(--surface);
     border-top: 1px solid var(--line);
@@ -1594,12 +1619,12 @@ h3 {
   }
 
   .primary-nav > a:not(.button) {
-    padding: 14px 8px;
+    padding: 14px var(--space-sm);
     font-size: 1.15rem;
   }
 
   .primary-nav > .button {
-    margin-top: 20px;
+    margin-top: var(--space-lg);
   }
 
   .hero {
@@ -1658,7 +1683,7 @@ h3 {
   }
 
   .site-footer {
-    padding-block: 28px;
+    padding-block: var(--space-xl);
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;
@@ -1684,7 +1709,7 @@ h3 {
 
   .hero-intro {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: var(--space-xl);
   }
 
   .identity-line {
@@ -1729,13 +1754,13 @@ h3 {
     border-radius: 27px;
   }
 
-  .phone-screen { padding: 18px 8px 8px; border-radius: 22px; }
+  .phone-screen { padding: 18px var(--space-sm) var(--space-sm); border-radius: 22px; }
   .phone::after { border-radius: 25px; }
-  .phone-camera { top: 12px; }
+  .phone-camera { top: var(--space-md); }
   .phone-camera-ios { width: 48px; height: 16px; }
   .device-label { font-size: .72rem; }
   .app-status { margin-bottom: 13px; }
-  .app-title { margin-bottom: 12px; font-size: 10px; }
+  .app-title { margin-bottom: var(--space-md); font-size: 10px; }
   .focus-panel { min-height: 82px; padding: 9px; }
   .focus-panel strong { font-size: 12px; }
   .progress-ring { width: 38px; height: 38px; top: 18px; right: 9px; border-width: 5px; }
@@ -1748,8 +1773,8 @@ h3 {
   .shared-core {
     width: 58px;
     min-height: 84px;
-    padding: 10px 4px;
-    gap: 4px;
+    padding: 10px var(--space-xs);
+    gap: var(--space-xs);
   }
 
   .core-mark { width: 24px; height: 24px; }
@@ -1763,7 +1788,7 @@ h3 {
   .section-heading-inline {
     align-items: flex-start;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--space-md);
   }
 
   .featured-work { grid-template-columns: 1fr; }
@@ -1780,7 +1805,7 @@ h3 {
 
   .project-monogram { width: 64px; height: 64px; }
 
-  .work-item p { margin-block: 8px 12px; }
+  .work-item p { margin-block: var(--space-sm) var(--space-md); }
 
   .work-skill-shelf {
     align-items: stretch;
@@ -1834,7 +1859,7 @@ h3 {
   .additional-work {
     align-items: flex-start;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--space-md);
   }
 
   .additional-work ul { gap: 9px 18px; }
@@ -1857,7 +1882,7 @@ h3 {
   .expertise-columns article,
   .expertise-columns article + article {
     min-height: auto;
-    padding: 28px 0;
+    padding: var(--space-xl) 0;
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
