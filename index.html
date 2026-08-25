@@ -1,759 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Mahmoud I. Khalil - Senior Mobile Engineer building native Android (Kotlin, Jetpack Compose) and native iOS (Swift, SwiftUI) applications">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mahmoud I. Khalil builds production-ready Android, iOS, and Kotlin Multiplatform applications from Figma designs and APIs.">
   <meta name="author" content="Mahmoud I. Khalil">
-  <meta name="keywords" content="Mobile Engineer, Android Developer, iOS Developer, Kotlin, Swift, SwiftUI, Jetpack Compose, KMP, Cairo, Egypt">
+  <meta name="keywords" content="Senior Mobile Engineer, Android Developer, iOS Developer, Kotlin, Jetpack Compose, SwiftUI, Kotlin Multiplatform, KMP, Cairo, Egypt">
+  <meta name="theme-color" content="#ffffff" data-theme-color>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-  <link rel="apple-touch-icon" href="img/favicon.svg">
-  
-  <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Mahmoud I. Khalil | Senior Mobile Engineer — Android & iOS">
-  <meta property="og:description" content="Senior Mobile Engineer with 6+ years of experience building native Android and iOS applications used by millions">
+  <meta property="og:title" content="Mahmoud I. Khalil — Senior Mobile Engineer">
+  <meta property="og:description" content="Production-ready Android, iOS, and KMP applications—from Figma and APIs to launch.">
   <meta property="og:image" content="https://raw.githubusercontent.com/mahmoudibrahimabdulfattah/profile-assets/main/profile.jpg">
   <meta property="og:url" content="https://mahmoudibrahimabdulfattah.github.io">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Mahmoud I. Khalil | Senior Mobile Engineer — Android & iOS">
-  <meta name="twitter:description" content="Senior Mobile Engineer with 6+ years of experience building native Android and iOS applications used by millions">
-
-  <title>Mahmoud I. Khalil | Senior Mobile Engineer</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>Mahmoud I. Khalil — Senior Mobile Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem('mk-theme');
+        const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : preferredTheme;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch (_) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+  <link href="css/resume.css?v=22.0" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="css/resume.css?v=14.0" rel="stylesheet">
-
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mahmoud Ibrahim Khalil",
+    "jobTitle": "Senior Mobile Engineer",
+    "url": "https://mahmoudibrahimabdulfattah.github.io",
+    "sameAs": [
+      "https://www.linkedin.com/in/mahmoudibrahimabdulfattah/",
+      "https://github.com/mahmoudibrahimabdulfattah"
+    ],
+    "knowsAbout": ["Android", "iOS", "Kotlin", "Jetpack Compose", "SwiftUI", "Kotlin Multiplatform"]
+  }
+  </script>
 </head>
+<body id="top">
+  <!--
+  THESIS: A product-proof-first mobile portfolio that makes the delivery offer clear in seconds and refuses the old resume sidebar, decorative gradients, and technology clutter.
+  OWN-WORLD: White, charcoal, professional blue, cool-gray rules, compact radii, Manrope type, and paired Android/iOS product proofs joined by one shared KMP cue.
+  STORY: Understand the offer, see credible scale and cross-platform work, inspect engineering depth, then start a conversation by Email or LinkedIn.
+  FIRST VIEWPORT: An authored MK mark and contact-led nav; large human portrait and two-line offer left; dominant Android/iOS product proofs and shared-core marker right; factual credibility rail directly below.
+  FORM: Category Standard / Product Proof First, standing exit, seed 132c0455.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+  -->
 
-<body id="page-top">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">
-      <span class="d-block d-lg-none">Mahmoud Khalil</span>
-      <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="https://raw.githubusercontent.com/mahmoudibrahimabdulfattah/profile-assets/main/profile.jpg" alt="Mahmoud Ibrahim">
-      </span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#education">Education</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#certificates">Certificates</a>
-        </li>
-      </ul>
+  <header class="site-header" data-header>
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Mahmoud I. Khalil, home">
+        <svg class="brand-mark" viewBox="0 0 58 38" aria-hidden="true" focusable="false">
+          <path d="M2 33V5h8l9 13L28 5h8v28h-8V17L19 30 10 17v16H2Z"/>
+          <path d="M30 5h8v10L48 5h10L44 19l14 14H47l-9-9v9h-8V5Z"/>
+        </svg>
+        <span class="brand-name">Mahmoud I. Khalil</span>
+      </a>
+
+      <div class="header-tools">
+        <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle>
+          <span class="sr-only" data-theme-label>Switch to dark mode</span>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.5"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"/>
+          </svg>
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"/>
+          </svg>
+        </button>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle>
+          <span class="sr-only">Open navigation</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-menu>
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#about">About</a>
+        <a class="button button-primary button-small" href="mailto:mahmoudibrahimabdulfattah@gmail.com">
+          <i class="far fa-envelope" aria-hidden="true"></i>
+          Email me
+        </a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <div class="container-fluid p-0">
-
-    <!-- About Section -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
-      <div class="w-100">
-        <h1 class="mb-0">Mahmoud
-          <span class="text-primary">I. Khalil</span>
-        </h1>
-        <div class="subheading mb-4">
-          <span class="badge badge-primary">Senior Mobile Engineer — Android &amp; iOS</span>
-          <span class="years-exp" id="years-exp"></span>
-		</div>
-
-        <div class="contact-info mb-4">
-          <span class="contact-item">
-            <i class="fas fa-map-marker-alt"></i> Cairo, Egypt
-          </span>
-          <span class="contact-item">
-            <i class="fas fa-phone"></i> +20 114 710 4982
-          </span>
-          <span class="contact-item">
-            <i class="fas fa-envelope"></i> 
-            <a href="mailto:mahmoudibrahimabdulfattah@gmail.com">mahmoudibrahimabdulfattah@gmail.com</a>
-          </span>
-        </div>
-
-        <p class="lead mb-4">
-          Senior Mobile Engineer with <span id="years-exp-text">6+</span> years of experience building native mobile applications:
-          Android with Kotlin &amp; Jetpack Compose, and iOS with Swift &amp; SwiftUI.
-          Proven track record across enterprise and consumer products, from Telecom Egypt's internal tools to the WeightWatchers app
-          (10M+ downloads, 4.5★ on Google Play), with a strong focus on code quality, testing,
-          and cross-functional collaboration across Egypt, UAE, and USA.
-        </p>
-        
-        <div class="social-icons mb-4">
-          <a href="https://www.linkedin.com/in/mahmoudibrahimabdulfattah/" target="_blank" title="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="https://github.com/mahmoudibrahimabdulfattah" target="_blank" title="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="mailto:mahmoudibrahimabdulfattah@gmail.com" title="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a href="https://drive.google.com/file/d/1USHmdcAgjljq444uuJswfn3VPDF88FA0/view?usp=drive_link" target="_blank" class="download-cv-btn" title="Download CV">
-            <i class="fas fa-file-pdf"></i>
-            <span>Download CV</span>
-          </a>
-        </div>
-
-        <div class="languages-badges">
-          <span class="lang-badge"><i class="fas fa-globe"></i> Arabic (Native)</span>
-          <span class="lang-badge"><i class="fas fa-globe"></i> English (Professional)</span>
-        </div>
-      </div>
-    </section>
-
-    <hr class="m-0">
-
-    <!-- Experience Section -->
-    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience">
-      <div class="w-100">
-        <h2 class="mb-5"><i class="fas fa-briefcase section-icon"></i> Experience</h2>
-
-        <!-- Telecom Egypt - Mobile (Android & iOS) -->
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Senior Mobile Engineer (Android &amp; iOS)</h3>
-            <div class="subheading mb-3">
-              <a href="https://www.te.eg/" target="_blank">Telecom Egypt</a>
-              <span class="location-tag">📍 Smart Village, Egypt</span>
-            </div>
-            <ul class="experience-list">
-              <li>Building native iOS features with Swift and SwiftUI as part of the iOS team.</li>
-              <li>Delivering across both native platforms: Kotlin/Jetpack Compose on Android and Swift/SwiftUI on iOS.</li>
-              <li>Applying Clean Architecture and MVVM/MVI consistently across Android and iOS codebases.</li>
-              <li>Collaborating with cross-functional teams to align features, APIs, and releases across platforms.</li>
-            </ul>
-            <div class="tech-tags">
-              <span class="tech-tag">Swift</span>
-              <span class="tech-tag">SwiftUI</span>
-              <span class="tech-tag">Kotlin</span>
-              <span class="tech-tag">Jetpack Compose</span>
-              <span class="tech-tag">Clean Architecture</span>
-            </div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">05/2026 - Present</span>
-          </div>
-        </div>
-
-        <!-- WeightWatchers -->
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Senior Android Engineer</h3>
-            <div class="subheading mb-3">
-              <a href="https://www.weightwatchers.com/us/" target="_blank">WeightWatchers</a>
-              <span class="location-tag">📍 Remote - New York, United States</span>
-            </div>
-            <ul class="experience-list">
-              <li>Building and maintaining the official <a href="https://play.google.com/store/apps/details?id=com.weightwatchers.mobile" target="_blank">WeightWatchers</a> Android app used by millions worldwide.</li>
-              <li>Shipping new features and UI with Kotlin, Jetpack Compose, and modern Android architecture.</li>
-              <li>Collaborating with product, design, and backend teams on scalable tracking experiences.</li>
-              <li>Boosting reliability and code quality via Clean Architecture, MVI/MVVM, testing, and monitoring.</li>
-            </ul>
-            <div class="tech-tags">
-              <span class="tech-tag">Kotlin</span>
-              <span class="tech-tag">Jetpack Compose</span>
-              <span class="tech-tag">Clean Architecture</span>
-              <span class="tech-tag">Multi-module</span>
-              <span class="tech-tag">Coroutines</span>
-            </div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">08/2025 - 05/2026</span>
-          </div>
-        </div>
-
-        <!-- iSpace Technology -->
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Senior Android Engineer</h3>
-            <div class="subheading mb-3">
-              <a href="https://ispace.com.eg/" target="_blank">iSpace Technology</a>
-              <span class="location-tag">📍 Remote - Dubai, UAE</span>
-              <span class="job-type">Part-time</span>
-            </div>
-            <ul class="experience-list">
-              <li>Architected and enhanced <a href="https://play.google.com/store/apps/details?id=com.ispace.sgs.app" target="_blank">SGS Super App</a>, integrating AI conversational features via Labiba SDK.</li>
-              <li>Contributed to SDK integrations and ensured clean abstraction layers between the app.</li>
-			  <li>Led feature development and performance optimizations across multiple Android apps.</li>
-              <li>Utilizing Multi-Module architecture, Kotlin Flow, and Retrofit for seamless remote collaboration.</li>
-              <li>Implemented Clean Architecture with MVVM/MVI patterns, reducing bug recurrence.</li>
-            </ul>
-            <div class="tech-tags">
-              <span class="tech-tag">Kotlin</span>
-              <span class="tech-tag">Jetpack Compose</span>
-              <span class="tech-tag">Clean Architecture</span>
-              <span class="tech-tag">MVVM/MVI</span>
-              <span class="tech-tag">AI/ML</span>
-            </div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">06/2024 - 08/2025</span>
-          </div>
-        </div>
-
-        <!-- Telecom Egypt -->
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Senior Android Engineer</h3>
-            <div class="subheading mb-3">
-              <a href="https://www.te.eg/" target="_blank">Telecom Egypt</a>
-              <span class="location-tag">📍 Smart Village, Egypt</span>
-            </div>
-            <ul class="experience-list">
-              <li>Led the development of new applications and supported existing ones.</li>
-              <li>Designed scalable Android architectures using Clean Architecture and multi-module structure.</li>
-              <li>Enabling easier feature isolation and reusability across internal systems.</li>
-              <li>Actively leverage AI-powered development tools to accelerate refactoring and generate unit tests.</li>
-              <li>Mentor junior developers to provide tech guidance.</li>
-            </ul>
-            <div class="tech-tags">
-              <span class="tech-tag">Kotlin</span>
-              <span class="tech-tag">Coroutines</span>
-              <span class="tech-tag">Flow</span>
-              <span class="tech-tag">Compose</span>
-              <span class="tech-tag">Firebase</span>
-            </div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">01/2023 - 08/2025</span>
-          </div>
-        </div>
-	      
-        <!-- Spirit -->
-	      <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Android Engineer</h3>
-            <div class="subheading mb-3">
-              <a href="https://spirit-co.com/" target="_blank">Spirit for Consultancy Services</a>
-              <span class="location-tag">📍 Nasr City, Cairo, Egypt</span>
-            </div>
-            <ul class="experience-list">
-              <li>Developed mobile applications for customers.</li>
-              <li>Responsible for making changes to the Smart Sales app.</li>
-              <li>Collaborated with product owners to define requirements and deliver solutions.</li>
-              <li>Integrated mobile applications with SAP systems and built web services using C# WCF.</li>
-            </ul>
-            <div class="tech-tags">
-              <span class="tech-tag">Kotlin</span>
-              <span class="tech-tag">Flutter</span>
-              <span class="tech-tag">SAP Integration</span>
-              <span class="tech-tag">C# WCF</span>
-            </div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">12/2021 - 01/2023</span>
-          </div>
-        </div>
-
-        <!-- Intern -->
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Android Developer Intern</h3>
-            <div class="subheading mb-3">
-              <a href="https://www.linkedin.com/company/te-data/" target="_blank">TE Data</a>
-              <span class="location-tag">📍 Smart Village, Egypt</span>
-            </div>
-            <ul class="experience-list">
-              <li>Developed WE Home (My WE) application using Java, Android SDK, Retrofit2, and Material Design.</li>
-              <li>Re-Built 3AL-MASHY application using Java, SQLite, list view, and Google Maps.</li>
-              <li>Able to work with REST APIs and Google Services (Google Maps & Firebase).</li>
-              <li>Built 3 Android apps during the internship.</li>
-            </ul>
-            <div class="tech-tags">
-              <span class="tech-tag">Java</span>
-              <span class="tech-tag">Android SDK</span>
-              <span class="tech-tag">Retrofit</span>
-              <span class="tech-tag">Firebase</span>
-            </div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">06/2018 - 08/2018</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <hr class="m-0">
-
-    <!-- Skills Section -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
-      <div class="w-100">
-        <h2 class="mb-5"><i class="fas fa-code section-icon"></i> Skills</h2>
-
-        <div class="skills-container">
-          
-          <div class="skill-category">
-            <h4><i class="fas fa-laptop-code"></i> Languages & Frameworks</h4>
-            <div class="skill-pills">
-              <span class="skill-pill expert">Kotlin (Expert)</span>
-              <span class="skill-pill">Swift</span>
-              <span class="skill-pill">Jetpack Compose</span>
-              <span class="skill-pill">SwiftUI</span>
-              <span class="skill-pill">Java</span>
-              <span class="skill-pill">KMP (Kotlin Multiplatform)</span>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="hero-intro">
+          <div class="identity-line">
+            <div class="portrait-frame">
+              <img class="portrait" src="https://raw.githubusercontent.com/mahmoudibrahimabdulfattah/profile-assets/main/profile.jpg" alt="Mahmoud I. Khalil" width="176" height="176">
             </div>
           </div>
 
-          <div class="skill-category">
-            <h4><i class="fas fa-project-diagram"></i> Architecture & Patterns</h4>
-            <div class="skill-pills">
-              <span class="skill-pill">Clean Architecture</span>
-              <span class="skill-pill">MVI</span>
-              <span class="skill-pill">MVVM</span>
-              <span class="skill-pill">SOLID</span>
-              <span class="skill-pill">Design Patterns</span>
-              <span class="skill-pill">Multi-Module</span>
-              <span class="skill-pill">Hilt/Dagger/Koin</span>
-            </div>
-          </div>
+          <div class="hero-message">
+            <p class="role-line">Senior Mobile Engineer — Android · iOS · KMP</p>
+            <h1 id="hero-title"><span>I build production-ready</span><span>mobile apps.</span></h1>
+            <p class="hero-lede">Give me your Figma designs and APIs, and I'll deliver a scalable mobile application built with Kotlin and Compose or KMP.</p>
 
-          <div class="skill-category">
-            <h4><i class="fas fa-tools"></i> Tools & Libraries</h4>
-            <div class="skill-pills">
-              <span class="skill-pill">Coroutines</span>
-              <span class="skill-pill">Flow</span>
-              <span class="skill-pill">RxJava</span>
-              <span class="skill-pill">ROOM</span>
-              <span class="skill-pill">Retrofit</span>
-              <span class="skill-pill">Glide</span>
-              <span class="skill-pill">Firebase</span>
-              <span class="skill-pill">Google Maps</span>
-              <span class="skill-pill">JUnit</span>
-              <span class="skill-pill">Espresso</span>
-              <span class="skill-pill">Android Studio</span>
-              <span class="skill-pill">Xcode</span>
-              <span class="skill-pill">Git/GitHub</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h4><i class="fas fa-vial"></i> DevOps & Testing</h4>
-            <div class="skill-pills">
-              <span class="skill-pill">Unit Testing</span>
-              <span class="skill-pill">UI Testing</span>
-              <span class="skill-pill">CI/CD</span>
-              <span class="skill-pill">Performance Tuning</span>
-              <span class="skill-pill">Crashlytics</span>
-              <span class="skill-pill">Agile/Scrum</span>
-              <span class="skill-pill">Jira</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h4><i class="fas fa-cloud"></i> Cloud & Integrations</h4>
-            <div class="skill-pills">
-              <span class="skill-pill">REST APIs</span>
-              <span class="skill-pill">JSON</span>
-              <span class="skill-pill">SAP WCF</span>
-              <span class="skill-pill">AI/ML (Labiba SDK)</span>
-              <span class="skill-pill">Push Notifications</span>
-              <span class="skill-pill">Offline-First</span>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h4><i class="fas fa-users"></i> Soft Skills</h4>
-            <div class="skill-pills">
-              <span class="skill-pill soft">Team Leadership</span>
-              <span class="skill-pill soft">Cross-Functional Collaboration</span>
-              <span class="skill-pill soft">Mentoring</span>
-              <span class="skill-pill soft">Remote Work</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <hr class="m-0">
-
-    <!-- Projects Section -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="projects">
-      <div class="w-100">
-        <h2 class="mb-5"><i class="fas fa-rocket section-icon"></i> Projects</h2>
-
-        <div class="projects-grid">
-
-          <div class="project-card featured">
-            <div class="project-header">
-              <h4><a href="https://github.com/mahmoudibrahimabdulfattah/Mahmoud-Ibrahim-CV" target="_blank">Interactive CV — Compose Multiplatform</a></h4>
-              <span class="project-badge">Featured</span>
-            </div>
-            <p>My CV as a real app: one Kotlin codebase running natively on Android, iOS, Desktop, and Web, with dark mode, full Arabic/RTL support, and live language switching.</p>
-            <div class="project-tech">
-              <span>Kotlin</span>
-              <span>Compose Multiplatform</span>
-              <span>KMP</span>
-              <span>6 Targets</span>
-              <span>RTL/i18n</span>
-            </div>
-          </div>
-
-          <div class="project-card featured">
-            <div class="project-header">
-              <h4><a href="https://play.google.com/store/apps/details?id=com.weightwatchers.mobile" target="_blank">WeightWatchers</a></h4>
-              <span class="project-badge">Featured</span>
-            </div>
-            <p>Official Android app for the WeightWatchers weight-loss program, with over 10M+ downloads and a 4.5★ rating on Google Play, helping members track food, activity, water, and weight.</p>
-            <div class="project-tech">
-              <span>Kotlin</span>
-              <span>Jetpack Compose</span>
-              <span>Clean Arch</span>
-              <span>Multi-module</span>
-              <span>Coroutines</span>
-            </div>
-          </div>
-
-          <div class="project-card featured">
-            <div class="project-header">
-              <h4><a href="https://play.google.com/store/apps/details?id=com.ispace.sgs.app" target="_blank">SGS Super App</a></h4>
-              <span class="project-badge">Featured</span>
-            </div>
-            <p>Developed an AI-enhanced super app for Saudi Ground Services with conversational features.</p>
-            <div class="project-tech">
-              <span>Kotlin</span>
-              <span>Jetpack Compose</span>
-              <span>Labiba AI SDK</span>
-              <span>Clean Arch</span>
-              <span>MVVM</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h4>Mystery Shopper</h4>
-              <span class="project-badge internal">Internal</span>
-            </div>
-            <p>Custom Android application for Telecom Egypt's Mystery Shopper program, enabling agents to discreetly visit WE branches and conduct structured evaluations.</p>
-            <div class="project-tech">
-              <span>Kotlin</span>
-              <span>Jetpack Compose</span>
-              <span>Clean Arch</span>
-              <span>MVI</span>
-              <span>ROOM</span>
-              <span>Hilt</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h4>Data Cleansing</h4>
-              <span class="project-badge internal">Internal</span>
-            </div>
-            <p>Specialized Android application for Telecom Egypt field technicians to streamline scanning and documenting network cabinets and boxes.</p>
-            <div class="project-tech">
-              <span>Kotlin</span>
-              <span>Jetpack Compose</span>
-              <span>Clean Arch</span>
-              <span>MVI</span>
-              <span>ROOM</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h4><a href="https://play.google.com/store/apps/details?id=com.we.weAttend" target="_blank">WE Attend</a></h4>
-              <i class="fab fa-google-play"></i>
-            </div>
-            <p>App to simplify HR management processes, with tracking and managing attendance for Telecom Egypt employees.</p>
-            <div class="project-tech">
-              <span>Kotlin</span>
-              <span>XML</span>
-              <span>MVVM</span>
-              <span>Coroutines</span>
-              <span>Firebase</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h4><a href="https://play.google.com/store/search?q=WE%20HR&c=apps" target="_blank">WE HR</a></h4>
-              <i class="fab fa-google-play"></i>
-            </div>
-            <p>Allows TE employees to manage their services easily by accessing them from their devices.</p>
-            <div class="project-tech">
-              <span>Kotlin</span>
-              <span>XML</span>
-              <span>MVVM</span>
-              <span>Coroutines</span>
-              <span>Firebase</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h4><a href="https://play.google.com/store/apps/details?id=com.ucare.we" target="_blank">My WE</a></h4>
-              <i class="fab fa-google-play"></i>
-            </div>
-            <p>Mobile internet management app with online transactions: high-scale, secure payments.</p>
-            <div class="project-tech">
-              <span>Java</span>
-              <span>RxJava</span>
-              <span>XML</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h4><a href="https://github.com/mahmoudibrahimabdulfattah/MovieCatalogApp" target="_blank">Movie Catalog</a></h4>
-              <i class="fab fa-github"></i>
-            </div>
-            <p>Trending media app with modern scrolling UX inspired by TikTok.</p>
-            <div class="project-tech">
-              <span>Kotlin</span>
-              <span>Jetpack Compose</span>
-              <span>MVI</span>
-              <span>Hilt</span>
-              <span>Retrofit</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-header">
-              <h4><a href="https://github.com/mahmoudibrahimabdulfattah/NewsShortsCMP" target="_blank">News Shorts CMP</a></h4>
-              <i class="fab fa-github"></i>
-            </div>
-            <p>TikTok-style news reader built with Compose Multiplatform: one Kotlin codebase running on Android, iOS, Desktop, and Web, with offline-first caching and MVI architecture.</p>
-            <div class="project-tech">
-              <span>Kotlin</span>
-              <span>Compose Multiplatform</span>
-              <span>MVI</span>
-              <span>Koin</span>
-              <span>Ktor</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <hr class="m-0">
-
-    <!-- Education Section -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
-      <div class="w-100">
-        <h2 class="mb-5"><i class="fas fa-graduation-cap section-icon"></i> Education</h2>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Bachelor of Computer Science</h3>
-            <div class="subheading mb-3">
-              <a href="https://www.linkedin.com/school/misr-university-for-science-and-technology/" target="_blank">
-                Misr University for Science and Technology
+            <div class="hero-actions" aria-label="Contact Mahmoud">
+              <a class="button button-primary" href="mailto:mahmoudibrahimabdulfattah@gmail.com">
+                <i class="far fa-envelope" aria-hidden="true"></i>
+                Email me
+              </a>
+              <a class="button button-secondary" href="https://www.linkedin.com/in/mahmoudibrahimabdulfattah/" target="_blank" rel="noreferrer">
+                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                LinkedIn
               </a>
             </div>
-            <p>📍 6th of October City, Egypt</p>
-            <div class="education-details">
-              <span class="edu-badge"><i class="fas fa-star"></i> GPA: 3.47 / 4.0</span>
-              <span class="edu-badge"><i class="fas fa-award"></i> Very Good</span>
-            </div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="text-primary">2015 - 2019</span>
           </div>
         </div>
 
+        <div class="proof-row" aria-label="Career highlights">
+          <div><i class="fas fa-shield-alt" aria-hidden="true"></i><span><strong data-years>6+ years</strong><small>Professional experience</small></span></div>
+          <div><i class="fas fa-mobile-alt" aria-hidden="true"></i><span><strong>Android · iOS · KMP</strong><small>Cross-platform delivery</small></span></div>
+          <div><i class="fas fa-download" aria-hidden="true"></i><span><strong>10M+ downloads</strong><small>WeightWatchers on Google Play</small></span></div>
+          <div><i class="far fa-star" aria-hidden="true"></i><span><strong>4.5 star</strong><small>WeightWatchers rating</small></span></div>
+        </div>
+      </div>
+
+      <div class="product-visual">
+        <div class="device-stage" aria-label="Illustrative Android and iOS interface concepts connected by a shared Kotlin Multiplatform core">
+          <article class="device-proof device-proof-android">
+          <div class="device-label"><i class="fab fa-android" aria-hidden="true"></i> Android</div>
+          <div class="phone" aria-hidden="true">
+            <div class="phone-camera"></div>
+            <div class="phone-screen">
+              <div class="app-status"><span>9:22</span><span>● ●</span></div>
+              <div class="app-title"><span>Today</span><i class="far fa-bell"></i></div>
+              <div class="focus-panel">
+                <span>Focus</span>
+                <strong>25 min</strong>
+                <button type="button" tabindex="-1">Start</button>
+                <span class="progress-ring"></span>
+              </div>
+              <div class="task-list">
+                <strong>Release checklist</strong>
+                <span><i></i> Review the product flow</span>
+                <span><i></i> Validate API states</span>
+                <span><i></i> Prepare the build</span>
+              </div>
+              <div class="activity-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="app-nav"><i class="fas fa-home"></i><i class="far fa-check-square"></i><i class="far fa-chart-bar"></i><i class="far fa-user"></i></div>
+            </div>
+          </div>
+          </article>
+
+          <div class="shared-core" aria-hidden="true">
+            <svg class="core-mark" viewBox="0 0 32 32">
+              <defs><linearGradient id="core-kmp-gradient" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#00a8ff"/><stop offset="1" stop-color="#155eef"/></linearGradient></defs>
+              <path fill="url(#core-kmp-gradient)" d="M4 4h24L16 16l12 12H4Z"/><path fill="#fff" d="m10 10 6 6-6 6Z" opacity=".82"/>
+            </svg>
+            <strong>Shared<br>KMP core</strong>
+          </div>
+
+          <article class="device-proof device-proof-ios">
+          <div class="device-label"><i class="fab fa-apple" aria-hidden="true"></i> iOS</div>
+          <div class="phone phone-ios" aria-hidden="true">
+            <div class="phone-camera phone-camera-ios"></div>
+            <div class="phone-screen">
+              <div class="app-status"><span>9:41</span><span>● ●</span></div>
+              <div class="app-title"><span>Today</span><i class="far fa-bell"></i></div>
+              <div class="focus-panel">
+                <span>Focus</span>
+                <strong>25 min</strong>
+                <button type="button" tabindex="-1">Start</button>
+                <span class="progress-ring"></span>
+              </div>
+              <div class="task-list">
+                <strong>Release checklist</strong>
+                <span><i></i> Review the product flow</span>
+                <span><i></i> Validate API states</span>
+                <span><i></i> Prepare the build</span>
+              </div>
+              <div class="activity-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="app-nav"><i class="fas fa-home"></i><i class="far fa-check-square"></i><i class="far fa-chart-bar"></i><i class="far fa-user"></i></div>
+            </div>
+          </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <hr class="m-0">
+    <section class="section section-work" id="work" aria-labelledby="work-title">
+      <div class="featured-work-panel">
+        <div class="work-panel-heading">
+          <h2 id="work-title">Featured Work</h2>
+          <a class="text-link" href="https://github.com/mahmoudibrahimabdulfattah" target="_blank" rel="noreferrer">View all work <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
 
-    <!-- Certificates Section -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="certificates">
-      <div class="w-100">
-        <h2 class="mb-5"><i class="fas fa-certificate section-icon"></i> Certificates</h2>
-        
-        <div class="certificates-grid">
-          <div class="certificate-item">
-            <i class="fas fa-award"></i>
+        <div class="featured-work">
+          <article class="work-item work-item-lead">
+            <div class="project-monogram project-ww" aria-hidden="true"><span>W</span><span>W</span></div>
             <div>
-              <h5>Master Swift</h5>
-              <span>LinkedIn</span>
-      </div>
-          </div>
+              <div class="work-title-row">
+                <h3>WeightWatchers</h3>
+                <a href="https://play.google.com/store/apps/details?id=com.weightwatchers.mobile" target="_blank" rel="noreferrer" aria-label="View WeightWatchers on Google Play"><i class="fab fa-google-play" aria-hidden="true"></i></a>
+              </div>
+              <p>Food, activity, and weight tracking used by millions worldwide.</p>
+              <ul class="tag-list" aria-label="WeightWatchers technologies">
+                <li>Kotlin</li><li>Compose</li><li>Multi-module</li>
+              </ul>
+            </div>
+          </article>
 
-          <div class="certificate-item">
-            <i class="fas fa-award"></i>
+          <article class="work-item">
+            <div class="project-monogram project-news" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div>
+              <div class="work-title-row">
+                <h3>News Shorts CMP</h3>
+                <a href="https://github.com/mahmoudibrahimabdulfattah/NewsShortsCMP" target="_blank" rel="noreferrer" aria-label="View News Shorts CMP on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+              </div>
+              <p>Short-form news across Android, iOS, Desktop, and Web.</p>
+              <ul class="tag-list"><li>KMP</li><li>Compose</li><li>Offline-first</li></ul>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <div class="project-monogram project-cv" aria-hidden="true"><i class="fas fa-id-badge"></i></div>
+            <div>
+              <div class="work-title-row">
+                <h3>Interactive CV</h3>
+                <a href="https://github.com/mahmoudibrahimabdulfattah/Mahmoud-Ibrahim-CV" target="_blank" rel="noreferrer" aria-label="View Interactive CV on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+              </div>
+              <p>One Compose Multiplatform CV across four platforms.</p>
+              <ul class="tag-list"><li>KMP</li><li>Compose</li><li>i18n</li></ul>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <div class="project-monogram project-sgs" aria-hidden="true">SGS</div>
+            <div>
+              <div class="work-title-row">
+                <h3>SGS Super App</h3>
+                <a href="https://play.google.com/store/apps/details?id=com.ispace.sgs.app" target="_blank" rel="noreferrer" aria-label="View SGS Super App on Google Play"><i class="fab fa-google-play" aria-hidden="true"></i></a>
+              </div>
+              <p>AI-enhanced employee self-service for mobile teams.</p>
+              <ul class="tag-list"><li>Kotlin</li><li>Compose</li><li>AI SDK</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="work-proof-footer">
+        <h3 class="skills-title">Skills</h3>
+        <div class="work-skill-shelf" aria-label="Core mobile technologies">
+          <span><svg class="skill-logo" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="kotlin-gradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#00a8ff"/><stop offset=".52" stop-color="#7f52ff"/><stop offset="1" stop-color="#ff4f86"/></linearGradient></defs><path fill="url(#kotlin-gradient)" d="M2 2h20L12 12l10 10H2Z"/></svg>Kotlin</span>
+          <span><svg class="skill-logo" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="kmp-gradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#7f52ff"/><stop offset="1" stop-color="#5b36e8"/></linearGradient></defs><path fill="url(#kmp-gradient)" d="M2 2h20L12 12l10 10H2Z"/><path fill="#fff" d="m7 7 5 5-5 5Z" opacity=".8"/></svg>Kotlin Multiplatform</span>
+          <span><svg class="skill-logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285f4" d="m12 2 9 5v10l-9 5-9-5V7Z"/><path fill="#34a853" d="m3 7 9 5v10l-9-5Z"/><path fill="#00bcd4" d="m21 7-9 5-9-5 9-5Z"/><path fill="#fff" d="m12 7 4.6 2.6L12 12.2 7.4 9.6Z"/></svg>Jetpack Compose</span>
+          <span><i class="fab fa-apple skill-fa skill-apple" aria-hidden="true"></i>SwiftUI</span>
+          <span><svg class="skill-logo" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="coroutines-gradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#ff4f86"/><stop offset=".48" stop-color="#7f52ff"/><stop offset="1" stop-color="#00b8d9"/></linearGradient></defs><path fill="url(#coroutines-gradient)" d="M2 2h20L12 12l10 10H2Z"/></svg>Coroutines</span>
+          <span><i class="fas fa-project-diagram skill-fa skill-flow" aria-hidden="true"></i>Flow</span>
+          <span><svg class="skill-logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffca28" d="m4 19 3-16 4 7 3-5 6 14-8 4Z"/><path fill="#ffa000" d="m4 19 7-9 3-5 6 14-8 4Z"/><path fill="#f57c00" d="m12 23 8-4-4-3Z"/></svg>Firebase</span>
+          <span><svg class="skill-logo skill-graphql" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4.6v8.8L12 21l-8-4.6V7.6Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 7.6h16M4 16.4h16M12 3 4 16.4M12 3l8 13.4M12 21 4 7.6M12 21l8-13.4" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="12" cy="3" r="1.5"/><circle cx="4" cy="7.6" r="1.5"/><circle cx="20" cy="7.6" r="1.5"/><circle cx="4" cy="16.4" r="1.5"/><circle cx="20" cy="16.4" r="1.5"/><circle cx="12" cy="21" r="1.5"/></svg>GraphQL</span>
+          <span><i class="fab fa-git-alt skill-fa skill-git" aria-hidden="true"></i>Git</span>
+          <span><i class="fas fa-sync-alt skill-fa skill-ci" aria-hidden="true"></i>CI/CD</span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="floating-contact" aria-label="Project contact">
+      <a class="quiet-cta" href="mailto:mahmoudibrahimabdulfattah@gmail.com">
+        <span class="quiet-cta-icon"><i class="far fa-envelope" aria-hidden="true"></i></span>
+        <span class="quiet-cta-copy"><strong>Have a project in mind?</strong><small>Let’s build something production-ready together.</small></span>
+        <span class="quiet-cta-action">Email me <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+      </a>
+    </aside>
+
+    <section class="section process" id="process" aria-labelledby="process-title">
+      <div class="section-heading">
+        <h2 id="process-title">From handoff to launch</h2>
+        <p>A straightforward delivery path for clients, backed by senior engineering decisions.</p>
+      </div>
+
+      <ol class="process-list">
+        <li>
+          <span class="process-icon"><i class="far fa-object-group" aria-hidden="true"></i></span>
+          <div><h3>Share the product</h3><p>Bring the Figma designs, API documentation, priorities, and the outcome you need.</p></div>
+        </li>
+        <li>
+          <span class="process-icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></span>
+          <div><h3>Build the right app</h3><p>I turn the handoff into a scalable Android, iOS, or KMP codebase with clear milestones.</p></div>
+        </li>
+        <li>
+          <span class="process-icon"><i class="fas fa-rocket" aria-hidden="true"></i></span>
+          <div><h3>Prepare to ship</h3><p>Quality checks, release readiness, and a maintainable foundation for the next feature.</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section experience" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading section-heading-inline">
         <div>
-              <h5>iOS 15 and Swift 5</h5>
-              <span>LinkedIn</span>
-            </div>
-          </div>
-
-          <div class="certificate-item">
-            <i class="fas fa-award"></i>
-            <div>
-              <h5>Advanced Android Kotlin Development Nanodegree</h5>
-              <span>Udacity</span>
-            </div>
-          </div>
-
-          <div class="certificate-item">
-            <i class="fas fa-award"></i>
-            <div>
-              <h5>Introduction to Software Testing Concepts & Techniques</h5>
-              <span>ITI</span>
-            </div>
-          </div>
-
-          <div class="certificate-item">
-            <i class="fas fa-award"></i>
-            <div>
-              <h5>Kotlin Programming Language</h5>
-              <span>Udemy</span>
-            </div>
-          </div>
-
-          <div class="certificate-item">
-            <i class="fas fa-award"></i>
-            <div>
-              <h5>SQL for Statistics Essential Training</h5>
-              <span>LinkedIn</span>
-            </div>
-          </div>
-
-          <div class="certificate-item">
-            <i class="fas fa-award"></i>
-            <div>
-              <h5>Introduction to Graphic Design: XD</h5>
-              <span>LinkedIn</span>
-            </div>
-          </div>
-
-          <div class="certificate-item">
-            <i class="fas fa-award"></i>
-            <div>
-              <h5>Android Bootcamp with Kotlin</h5>
-              <span>IntelliMinds</span>
-            </div>
-          </div>
+          <h2 id="experience-title">Production experience</h2>
+          <p>Native and multiplatform delivery across Egypt, the UAE, and the USA.</p>
         </div>
+        <a class="text-link" href="https://drive.google.com/file/d/1USHmdcAgjljq444uuJswfn3VPDF88FA0/view?usp=drive_link" target="_blank" rel="noreferrer">Download CV <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+      </div>
 
+      <div class="experience-list">
+        <article class="experience-item">
+          <div class="experience-meta"><time>05/2026 – Present</time><span>Cairo, Egypt</span></div>
+          <div><h3>Senior Mobile Engineer <span>Telecom Egypt</span></h3><p>Shipping across native Android and iOS with Kotlin, Jetpack Compose, Swift, and SwiftUI while aligning architecture and releases across teams.</p></div>
+        </article>
+        <article class="experience-item">
+          <div class="experience-meta"><time>08/2025 – 05/2026</time><span>Remote · USA</span></div>
+          <div><h3>Senior Android Engineer <span>WeightWatchers</span></h3><p>Built and maintained food, activity, and weight-tracking experiences in a product used by millions worldwide.</p></div>
+        </article>
+        <article class="experience-item">
+          <div class="experience-meta"><time>06/2024 – 08/2025</time><span>Remote · UAE</span></div>
+          <div><h3>Senior Android Engineer <span>iSpace Technology</span></h3><p>Architected the SGS Super App, integrated conversational AI, and led performance and SDK work across Android products.</p></div>
+        </article>
+        <article class="experience-item">
+          <div class="experience-meta"><time>01/2023 – 08/2025</time><span>Smart Village, Egypt</span></div>
+          <div><h3>Senior Android Engineer <span>Telecom Egypt</span></h3><p>Led internal applications for field operations and HR with scalable multi-module architecture and modern Compose UI.</p></div>
+        </article>
+        <article class="experience-item">
+          <div class="experience-meta"><time>12/2021 – 01/2023</time><span>Cairo, Egypt</span></div>
+          <div><h3>Android Engineer <span>Spirit for Consultancy Services</span></h3><p>Shipped Android applications from concept to production and integrated mobile systems with SAP through C# WCF.</p></div>
+        </article>
       </div>
     </section>
 
-  </div>
-
-  <!-- Theme Toggle Floating Button -->
-  <button class="theme-toggle-float" id="themeToggle" title="Toggle Theme">
-    <i class="fas fa-sun" id="themeIcon"></i>
-  </button>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-content">
-      <span class="footer-text">© <span id="footer-year"></span> Mahmoud I. Khalil. All rights reserved.</span>
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/mahmoudibrahimabdulfattah/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/mahmoudibrahimabdulfattah" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <section class="section expertise" id="expertise" aria-labelledby="expertise-title">
+      <div class="section-heading">
+        <h2 id="expertise-title">Engineering depth</h2>
+        <p>The technical layer a Tech Lead can evaluate after the product promise is clear.</p>
       </div>
-    </div>
+
+      <div class="expertise-columns">
+        <article>
+          <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+          <h3>Mobile platforms</h3>
+          <p>Kotlin, Jetpack Compose, Swift, SwiftUI, Java, and Compose Multiplatform.</p>
+        </article>
+        <article>
+          <i class="fas fa-project-diagram" aria-hidden="true"></i>
+          <h3>Architecture</h3>
+          <p>Clean Architecture, MVI, MVVM, SOLID, multi-module systems, and dependency injection.</p>
+        </article>
+        <article>
+          <i class="fas fa-vial" aria-hidden="true"></i>
+          <h3>Quality and delivery</h3>
+          <p>Unit and UI testing, CI/CD, performance tuning, Crashlytics, code review, and mentoring.</p>
+        </article>
+        <article>
+          <i class="fas fa-plug" aria-hidden="true"></i>
+          <h3>Integrations</h3>
+          <p>REST APIs, offline-first data, Firebase, push notifications, maps, SAP WCF, and AI SDKs.</p>
+        </article>
+      </div>
+
+    </section>
+
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="about-copy">
+        <h2 id="about-title">A mobile engineer who works beyond the screen.</h2>
+        <p>I collaborate with product, design, backend, and QA teams to turn requirements into reliable releases, not just finished UI tickets. My work spans consumer products used by millions, enterprise tools, and shared Kotlin codebases across platforms.</p>
+        <div class="about-links">
+          <a class="text-link" href="https://github.com/mahmoudibrahimabdulfattah" target="_blank" rel="noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+          <a class="text-link" href="https://www.linkedin.com/in/mahmoudibrahimabdulfattah/" target="_blank" rel="noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="credentials">
+        <div>
+          <h3>Bachelor of Computer Science</h3>
+          <p>Misr University for Science and Technology · 2019</p>
+          <span>GPA 3.47 / 4.0</span>
+        </div>
+        <details>
+          <summary>Certificates and continued learning</summary>
+          <ul>
+            <li>Master Swift · LinkedIn</li>
+            <li>iOS 15 and Swift 5 · LinkedIn</li>
+            <li>Advanced Android Kotlin Development Nanodegree · Udacity</li>
+            <li>Software Testing Concepts & Techniques · ITI</li>
+            <li>Android Bootcamp with Kotlin · IntelliMinds</li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <section class="contact-strip" aria-labelledby="contact-title">
+      <div>
+        <h2 id="contact-title">Have a mobile project in mind?</h2>
+        <p>Send the designs, APIs, or current product context. I’ll tell you how I’d approach the build.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="button button-primary" href="mailto:mahmoudibrahimabdulfattah@gmail.com"><i class="far fa-envelope" aria-hidden="true"></i> Email me</a>
+        <a class="button button-secondary" href="https://www.linkedin.com/in/mahmoudibrahimabdulfattah/" target="_blank" rel="noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-current-year></span> Mahmoud I. Khalil.</p>
+    <p>Cairo, Egypt · Available for selected freelance projects and senior mobile roles.</p>
   </footer>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/resume.min.js"></script>
-
-  <!-- Dynamic Years of Experience Calculator -->
-  <script>
-    (function() {
-      const startYear = 2020; // Career start year
-      const currentYear = new Date().getFullYear();
-      const yearsOfExperience = currentYear - startYear;
-      
-      // Update badge
-      const expElement = document.getElementById('years-exp');
-      if (expElement) {
-        expElement.textContent = yearsOfExperience + '+ Years Experience';
-      }
-      
-      // Update text in paragraph
-      const expTextElement = document.getElementById('years-exp-text');
-      if (expTextElement) {
-        expTextElement.textContent = yearsOfExperience + '+';
-      }
-      
-      // Update footer year
-      const footerYear = document.getElementById('footer-year');
-      if (footerYear) {
-        footerYear.textContent = currentYear;
-      }
-    })();
-  </script>
-
-  <!-- Theme Toggle Script -->
-  <script>
-    (function() {
-      const themeToggle = document.getElementById('themeToggle');
-      const themeIcon = document.getElementById('themeIcon');
-      const body = document.body;
-      
-      // Check for saved theme preference or default to dark
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      body.setAttribute('data-theme', savedTheme);
-      updateIcon(savedTheme);
-      
-      themeToggle.addEventListener('click', function() {
-        const currentTheme = body.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateIcon(newTheme);
-      });
-      
-      function updateIcon(theme) {
-        if (theme === 'dark') {
-          themeIcon.className = 'fas fa-sun';
-          themeToggle.title = 'Switch to Light Mode';
-        } else {
-          themeIcon.className = 'fas fa-moon';
-          themeToggle.title = 'Switch to Dark Mode';
-        }
-      }
-    })();
-  </script>
-
+  <script src="js/resume.js?v=22.0"></script>
 </body>
-
 </html>
-<!-- Last updated: 2025-11-29 -->
-
-<!-- Updated Sat Nov 29 22:24:32 EET 2025 -->

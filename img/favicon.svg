@@ -1,10 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f766e"/>
-      <stop offset="100%" style="stop-color:#14b8a6"/>
-    </linearGradient>
-  </defs>
-  <rect width="100" height="100" rx="20" fill="url(#grad)"/>
-  <text x="50" y="68" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="white" text-anchor="middle">MK</text>
+  <rect width="100" height="100" rx="20" fill="#155eef"/>
+  <g fill="#fff" transform="translate(10 24) scale(1.38)">
+    <path d="M2 33V5h8l9 13L28 5h8v28h-8V17L19 30 10 17v16H2Z"/>
+    <path d="M30 5h8v10L48 5h10L44 19l14 14H47l-9-9v9h-8V5Z"/>
+  </g>
 </svg>
