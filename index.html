@@ -73,16 +73,6 @@
       </a>
 
       <div class="header-tools">
-        <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle>
-          <span class="sr-only" data-theme-label>Switch to dark mode</span>
-          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="3.5"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"/>
-          </svg>
-          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"/>
-          </svg>
-        </button>
-
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle>
           <span class="sr-only">Open navigation</span>
           <span aria-hidden="true"></span>
@@ -95,6 +85,15 @@
         <a href="#experience">Experience</a>
         <a href="#expertise">Expertise</a>
         <a href="#about">About</a>
+        <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle>
+          <span class="sr-only" data-theme-label>Switch to dark mode</span>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.5"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"/>
+          </svg>
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"/>
+          </svg>
+        </button>
         <a class="button button-primary button-small" href="mailto:mahmoudibrahimabdulfattah@gmail.com">
           <i class="far fa-envelope" aria-hidden="true"></i>
           Email me
@@ -393,27 +392,28 @@
           <p>Misr University for Science and Technology · 2019</p>
           <span>GPA 3.47 / 4.0</span>
         </div>
-        <details>
-          <summary>Certificates and continued learning</summary>
-          <ul>
-            <li>Master Swift · LinkedIn</li>
-            <li>iOS 15 and Swift 5 · LinkedIn</li>
-            <li>Advanced Android Kotlin Development Nanodegree · Udacity</li>
-            <li>Software Testing Concepts & Techniques · ITI</li>
-            <li>Android Bootcamp with Kotlin · IntelliMinds</li>
-          </ul>
-        </details>
+        <hr class="credential-rule">
+        <h3>Certificates and continued learning</h3>
+        <ul>
+          <li>Master Swift · LinkedIn</li>
+          <li>iOS 15 and Swift 5 · LinkedIn</li>
+          <li>Advanced Android Kotlin Development Nanodegree · Udacity</li>
+          <li>Software Testing Concepts & Techniques · ITI</li>
+          <li>Android Bootcamp with Kotlin · IntelliMinds</li>
+        </ul>
       </div>
     </section>
 
     <section class="contact-strip" aria-labelledby="contact-title">
-      <div>
-        <h2 id="contact-title">Have a mobile project in mind?</h2>
-        <p>Send the designs, APIs, or current product context. I’ll tell you how I’d approach the build.</p>
-      </div>
-      <div class="contact-actions">
-        <a class="button button-primary" href="mailto:mahmoudibrahimabdulfattah@gmail.com"><i class="far fa-envelope" aria-hidden="true"></i> Email me</a>
-        <a class="button button-secondary" href="https://www.linkedin.com/in/mahmoudibrahimabdulfattah/" target="_blank" rel="noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a>
+      <div class="contact-strip-inner">
+        <div>
+          <h2 id="contact-title">Have a mobile project in mind?</h2>
+          <p>Send the designs, APIs, or current product context. I’ll tell you how I’d approach the build.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button button-primary" href="mailto:mahmoudibrahimabdulfattah@gmail.com"><i class="far fa-envelope" aria-hidden="true"></i> Email me</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/mahmoudibrahimabdulfattah/" target="_blank" rel="noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a>
+        </div>
       </div>
     </section>
   </main>

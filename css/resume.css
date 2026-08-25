@@ -201,28 +201,28 @@ h3 {
   position: sticky;
   z-index: 100;
   top: 0;
-  background: var(--header);
-  border-bottom: 1px solid var(--line-soft);
+  height: 72px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
   transition: background-color .25s var(--ease), border-color .25s var(--ease);
 }
 
 .header-inner {
   width: var(--page);
-  min-height: 72px;
+  height: 72px;
   margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 32px;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
   color: var(--ink);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -.02em;
 }
 
@@ -235,25 +235,27 @@ h3 {
 }
 
 .brand-name {
-  font-size: 1.03rem;
+  font-size: 20px;
 }
 
 .primary-nav {
+  margin-left: auto;
   display: flex;
   align-items: center;
-  gap: clamp(22px, 2.5vw, 42px);
+  gap: 44px;
+  font-weight: 600;
 }
 
 .header-tools {
-  margin-left: auto;
+  order: 2;
   display: flex;
   align-items: center;
   gap: var(--space-xs);
 }
 
 .theme-toggle {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   display: grid;
   place-items: center;
@@ -283,13 +285,14 @@ h3 {
   transition: opacity .2s var(--ease), transform .25s var(--ease);
 }
 
-.theme-icon-moon,
-:root[data-theme="dark"] .theme-icon-sun {
+.theme-icon-sun,
+:root[data-theme="dark"] .theme-icon-moon {
   opacity: 0;
   transform: rotate(-18deg) scale(.72);
 }
 
-:root[data-theme="dark"] .theme-icon-moon {
+.theme-icon-moon,
+:root[data-theme="dark"] .theme-icon-sun {
   opacity: 1;
   transform: rotate(0) scale(1);
 }
@@ -389,6 +392,11 @@ h3 {
   min-height: 42px;
   padding-inline: 17px;
   font-size: .87rem;
+}
+
+.primary-nav .button-small {
+  min-height: 40px;
+  padding: 0 20px;
 }
 
 .hero {
@@ -1073,8 +1081,6 @@ h3 {
 }
 
 @media (min-width: 1181px) {
-  .header-inner { min-height: 70px; }
-
   .button {
     min-height: 42px;
   }
@@ -1309,88 +1315,91 @@ h3 {
 
 .about {
   display: grid;
-  grid-template-columns: 1.25fr .75fr;
-  gap: clamp(54px, 10vw, 150px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 64px;
+}
+
+.about-copy h2 {
+  margin: 0 0 18px;
+  font-size: 28px;
+  line-height: 1.25;
 }
 
 .about-copy p {
-  max-width: 66ch;
-  margin-bottom: 30px;
+  max-width: 650px;
+  margin-bottom: 0;
   color: var(--ink-soft);
-  font-size: 1.08rem;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 .about-links {
+  margin-top: 28px;
   display: flex;
-  gap: var(--space-xl);
+  gap: 30px;
 }
 
 .credentials {
-  padding-top: 10px;
+  padding-inline-start: 40px;
+  border-inline-start: 1px solid var(--line);
 }
 
 .credentials > div {
-  padding-bottom: 30px;
-  border-bottom: 1px solid var(--line);
+  padding: 0;
 }
 
 .credentials h3 {
-  margin-bottom: 10px;
+  margin: 0 0 6px;
+}
+
+.credentials p,
+.credentials span,
+.credentials li {
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .credentials p {
-  margin-bottom: 5px;
-  color: var(--ink-soft);
+  margin-bottom: 0;
 }
 
-.credentials span {
-  color: var(--muted);
-  font-size: .86rem;
-}
-
-.credentials details {
-  padding-block: 26px;
-  border-bottom: 1px solid var(--line);
-}
-
-.credentials summary {
-  cursor: pointer;
-  color: var(--blue);
-  font-weight: 700;
+.credential-rule {
+  height: 1px;
+  margin: 22px 0;
+  background: var(--line);
+  border: 0;
 }
 
 .credentials ul {
-  margin: var(--space-lg) 0 0;
-  padding-left: var(--space-lg);
-  color: var(--ink-soft);
-}
-
-.credentials li + li {
-  margin-top: var(--space-sm);
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
 }
 
 .contact-strip {
+  padding: 34px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-strip-inner {
   width: var(--page);
-  margin: 0 auto 30px;
-  padding: clamp(var(--space-xl), 4vw, 54px);
+  margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 36px;
-  background: var(--surface-soft);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
 }
 
 .contact-strip h2 {
-  margin-bottom: 10px;
-  font-size: var(--type-section);
+  margin: 0 0 8px;
+  font-size: 25px;
 }
 
 .contact-strip p {
-  max-width: 65ch;
   margin-bottom: 0;
-  color: var(--muted);
+  color: var(--ink-soft);
 }
 
 .contact-actions {
@@ -1401,15 +1410,14 @@ h3 {
 
 .site-footer {
   width: var(--page);
-  min-height: 108px;
+  height: 84px;
   margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  color: var(--muted);
-  border-top: 1px solid var(--line-soft);
-  font-size: .79rem;
+  color: var(--ink-soft);
+  font-size: 13px;
 }
 
 .site-footer p {
@@ -1465,13 +1473,30 @@ h3 {
 
   html { scroll-padding-top: 76px; }
 
-  .header-inner { min-height: 68px; }
-
   .menu-toggle { display: block; }
 
+  .header-tools { margin-left: var(--space-xs); }
+
   .primary-nav {
+    position: static;
+    margin-left: auto;
+    padding: 0;
+    gap: 0;
+    background: transparent;
+    border: 0;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .primary-nav > :not(.theme-toggle) {
+    display: none;
+  }
+
+  .primary-nav[data-open="true"] {
     position: fixed;
-    top: 68px;
+    top: 72px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -1493,6 +1518,10 @@ h3 {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .primary-nav[data-open="true"] > a {
+    display: flex;
   }
 
   .primary-nav > a:not(.button) {
@@ -1548,13 +1577,15 @@ h3 {
 
   .about { grid-template-columns: 1fr; gap: 54px; }
 
-  .contact-strip {
+  .contact-strip-inner {
     align-items: flex-start;
     flex-direction: column;
   }
 
   .site-footer {
-    padding-block: var(--space-xl);
+    height: auto;
+    min-height: 84px;
+    padding-block: var(--space-lg);
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;
@@ -1741,7 +1772,6 @@ h3 {
 
   .skill-line span { padding-inline: 11px; }
 
-  .contact-strip { width: calc(100% - 24px); padding: 26px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
