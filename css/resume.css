@@ -1087,6 +1087,12 @@ a.work-item:hover {
   transform: translateY(-3px);
 }
 
+.work-item-internal:hover {
+  background: var(--surface-blue);
+  border-color: var(--blue);
+  transform: translateY(-3px);
+}
+
 a.work-item:focus-visible {
   outline: 3px solid var(--blue);
   outline-offset: 4px;
@@ -1149,6 +1155,15 @@ a.work-item:focus-visible {
   gap: 6px 12px;
 }
 
+.work-title-row:has(.work-status) {
+  display: block;
+}
+
+.work-title-row:has(.work-status) h3 {
+  display: inline;
+  margin-inline-end: 8px;
+}
+
 .work-title-row h3 {
   margin: 2px 0 6px;
   font-size: 15px;
@@ -1173,7 +1188,9 @@ a.work-item:focus-visible {
 }
 
 .work-status {
-  padding: 4px 7px;
+  display: inline-block;
+  margin-inline-end: auto;
+  padding: 3px 6px;
   color: var(--ink-soft);
   background: var(--surface);
   border: 1px solid var(--line);
@@ -1181,7 +1198,7 @@ a.work-item:focus-visible {
   font-size: 9px;
   font-weight: 800;
   line-height: 1;
-  letter-spacing: .08em;
+  letter-spacing: .05em;
   text-transform: uppercase;
 }
 
