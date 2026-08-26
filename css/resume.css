@@ -161,7 +161,12 @@ h1 {
   letter-spacing: var(--type-display-letter-spacing);
 }
 
-.hero h1 span { display: block; }
+.hero h1 span {
+  display: block;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
 
 h2 {
   margin-bottom: 18px;
@@ -587,9 +592,19 @@ h3 {
 }
 
 .phone {
-  --blue: #155eef;
-  --blue-dark: #004eeb;
-  --line-soft: #edf0f4;
+  --phone-screen: #ffffff;
+  --phone-text: #151a22;
+  --phone-secondary: #667085;
+  --phone-subtle: #98a2b3;
+  --phone-panel: #f7f9fc;
+  --phone-panel-border: #edf0f4;
+  --phone-accent: #155eef;
+  --phone-accent-border: #c9d9ff;
+  --phone-control-text: #ffffff;
+  --phone-ring-track: #d9e5ff;
+  --phone-bar: #2e79ef;
+  --phone-weekend: #98a2b3;
+  --phone-nav-indicator: #dce8ff;
   position: relative;
   width: clamp(210px, 17vw, 246px);
   aspect-ratio: .49;
@@ -597,6 +612,22 @@ h3 {
   background: #11151b;
   border-radius: 35px;
   box-shadow: var(--phone-shadow);
+}
+
+:root[data-theme="dark"] .phone {
+  --phone-screen: #0b1421;
+  --phone-text: #f9fafb;
+  --phone-secondary: #b8c2d1;
+  --phone-subtle: #718096;
+  --phone-panel: #101c2a;
+  --phone-panel-border: #263449;
+  --phone-accent: #2e90fa;
+  --phone-accent-border: #24568f;
+  --phone-control-text: #ffffff;
+  --phone-ring-track: #1b3761;
+  --phone-bar: #2e90fa;
+  --phone-weekend: #53637b;
+  --phone-nav-indicator: #17345c;
 }
 
 .phone::after {
@@ -634,8 +665,8 @@ h3 {
   padding: 22px var(--space-md) 11px;
   display: flex;
   flex-direction: column;
-  color: #151a22;
-  background: #fff;
+  color: var(--phone-text);
+  background: var(--phone-screen);
   border-radius: 27px;
   overflow: hidden;
 }
@@ -649,52 +680,81 @@ h3 {
 }
 
 .app-status {
-  margin-bottom: var(--space-lg);
+  margin-bottom: 14px;
   font-size: 7px;
   font-weight: 800;
 }
 
+.status-icons,
+.app-title-group,
+.app-title-actions {
+  display: flex;
+  align-items: center;
+}
+
+.status-icons { gap: 2px; }
+
+.status-icons svg {
+  width: 9px;
+  height: 9px;
+}
+
 .app-title {
-  margin-bottom: 17px;
-  font-size: 14px;
+  margin-bottom: 11px;
+  font-size: 12px;
   font-weight: 800;
 }
 
 .app-title .icon {
-  width: 11px;
-  height: 11px;
+  width: 12px;
+  height: 12px;
+}
+
+.app-title-group { gap: 7px; }
+.app-title-actions { gap: 8px; }
+
+.app-title-ios {
+  align-items: end;
+  font-size: 16px;
+}
+
+.app-title-ios .icon {
+  width: 13px;
+  height: 13px;
+  margin-bottom: 2px;
 }
 
 .focus-panel {
   position: relative;
-  min-height: 108px;
-  margin-bottom: 19px;
-  padding: 13px;
+  min-height: 86px;
+  margin-bottom: 8px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: #f7f9fc;
+  background: var(--phone-panel);
+  border: 1px solid var(--phone-panel-border);
   border-radius: 9px;
 }
 
 .focus-panel > span:first-child {
-  color: #667085;
+  color: var(--phone-secondary);
   font-size: 8px;
 }
 
 .focus-panel strong {
-  margin-bottom: 10px;
-  color: #155eef;
-  font-size: 16px;
+  margin-bottom: 7px;
+  color: var(--phone-accent);
+  font-size: 14px;
 }
 
 .focus-panel .mock-button {
   min-width: 54px;
   padding: var(--space-xs) 10px;
   display: inline-block;
-  color: var(--blue);
-  background: #edf3ff;
-  border: 1px solid #c9d9ff;
+  color: var(--phone-control-text);
+  background: var(--phone-accent);
+  border: 1px solid var(--phone-accent-border);
   border-radius: 5px;
   font-size: 8px;
   font-weight: 700;
@@ -703,73 +763,154 @@ h3 {
 
 .progress-ring {
   position: absolute;
-  top: 22px;
-  right: 17px;
-  width: 54px;
-  height: 54px;
-  border: 7px solid #d9e5ff;
-  border-top-color: var(--blue);
-  border-right-color: var(--blue);
+  top: 17px;
+  right: 12px;
+  width: 46px;
+  height: 46px;
+  border: 6px solid var(--phone-ring-track);
+  border-top-color: var(--phone-accent);
+  border-right-color: var(--phone-accent);
   border-radius: 50%;
   transform: rotate(14deg);
 }
 
 .task-list {
+  padding: 8px;
   display: flex;
   flex-direction: column;
-  gap: 11px;
-  font-size: 8px;
+  gap: 6px;
+  font-size: 7px;
+  background: var(--phone-panel);
+  border: 1px solid var(--phone-panel-border);
+  border-radius: 9px;
 }
 
-.task-list strong {
-  margin-bottom: 2px;
-  font-size: 10px;
-}
-
-.task-list span {
+.mock-section-header {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  justify-content: space-between;
+  color: var(--phone-secondary);
+  font-size: 7px;
 }
 
-.task-list i {
+.mock-section-header strong {
+  color: var(--phone-text);
+  font-size: 9px;
+}
+
+.task-row,
+.task-row > span {
+  display: flex;
+  align-items: center;
+}
+
+.task-row { justify-content: space-between; }
+.task-row > span { min-width: 0; gap: 6px; white-space: nowrap; }
+
+.task-row i {
   width: 9px;
   height: 9px;
   flex: 0 0 auto;
-  border: 1px solid #98a2b3;
+  border: 1px solid var(--phone-accent);
   border-radius: 50%;
 }
 
+.task-row .task-trailing { border-color: var(--phone-subtle); }
+
+.activity-panel {
+  min-height: 70px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
 .activity-bars {
-  height: 47px;
-  margin-top: auto;
+  height: 52px;
+  padding-top: 5px;
   display: flex;
   align-items: end;
-  justify-content: center;
-  gap: 10px;
-  border-bottom: 1px solid var(--line-soft);
+  justify-content: space-around;
+  gap: 4px;
+}
+
+.activity-bars > span {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  gap: 3px;
 }
 
 .activity-bars i {
   width: 5px;
-  height: 32%;
-  background: #b9cef9;
-  border-radius: 4px 4px 0 0;
+  height: 45%;
+  background: var(--phone-bar);
+  border-radius: 4px;
 }
 
-.activity-bars i:nth-child(2) { height: 68%; background: var(--blue); }
-.activity-bars i:nth-child(3) { height: 48%; background: var(--blue); }
-.activity-bars i:nth-child(4) { height: 82%; background: var(--blue); }
-.activity-bars i:nth-child(5) { height: 58%; }
+.activity-bars span:nth-child(1) i { height: 72%; }
+.activity-bars span:nth-child(2) i { height: 48%; }
+.activity-bars span:nth-child(3) i { height: 78%; }
+.activity-bars span:nth-child(4) i { height: 54%; }
+.activity-bars span:nth-child(5) i { height: 70%; }
+.activity-bars span:nth-child(6) i { height: 50%; }
+.activity-bars span:nth-child(7) i { height: 58%; }
+
+.activity-bars small {
+  color: var(--phone-secondary);
+  font-size: 6px;
+  line-height: 1;
+}
+
+.activity-bars .is-weekend i { background: var(--phone-weekend); }
 
 .app-nav {
-  padding-top: var(--space-md);
-  color: #667085;
-  font-size: 7px;
+  min-height: 38px;
+  margin-top: auto;
+  padding-top: 5px;
+  color: var(--phone-secondary);
+  border-top: 1px solid var(--phone-panel-border);
+  font-size: 6px;
 }
 
-.app-nav span:first-child {
-  color: var(--blue);
+.app-nav-item {
+  min-width: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.app-nav-icon {
+  position: relative;
+  width: 28px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+}
+
+.app-nav-icon svg {
+  position: relative;
+  z-index: 1;
+  width: 11px;
+  height: 11px;
+}
+
+.app-nav-item.is-active { color: var(--phone-accent); }
+
+.app-nav-android .is-active .app-nav-icon::before {
+  position: absolute;
+  inset: 0;
+  background: var(--phone-nav-indicator);
+  border-radius: 9px;
+  content: "";
+}
+
+.app-nav-ios .app-nav-icon { height: 14px; }
+
+.app-nav-ios .is-active .app-nav-icon::before {
+  display: none;
 }
 
 .shared-core {
@@ -1095,9 +1236,21 @@ h3 {
     min-height: 42px;
   }
 
+  .hero {
+    grid-template-columns: minmax(0, 1.63fr) minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .hero h1 {
+    max-width: none;
+    font-size: clamp(37px, 2.93vw, 45px);
+  }
+
+  .hero h1 span { white-space: nowrap; }
+
   .device-stage {
     min-height: 440px;
-    grid-template-columns: 1fr 94px 1fr;
+    grid-template-columns: 1fr 84px 1fr;
   }
 
   .phone {
@@ -1112,6 +1265,7 @@ h3 {
   .phone-camera-ios { width: 52px; height: 17px; }
   .app-status { margin-bottom: 13px; }
   .app-title { margin-bottom: var(--space-md); font-size: 11px; }
+  .app-title-ios { font-size: 14px; }
   .focus-panel { min-height: 86px; margin-bottom: 13px; padding: 10px; }
   .focus-panel strong { font-size: 13px; }
   .focus-panel .mock-button { min-width: 42px; font-size: 6px; }
@@ -1579,6 +1733,20 @@ h3 {
 
   .phone { width: min(30vw, 170px); }
 
+  .app-status { margin-bottom: 12px; }
+  .app-title { margin-bottom: 10px; font-size: 10px; }
+  .app-title-ios { font-size: 14px; }
+  .focus-panel { min-height: 72px; margin-bottom: 8px; padding: 8px; }
+  .focus-panel strong { font-size: 12px; }
+  .progress-ring { top: 16px; right: 8px; width: 36px; height: 36px; border-width: 4px; }
+  .focus-panel .mock-button { min-width: 38px; font-size: 6px; }
+  .task-list { padding: 6px; gap: 4px; font-size: 6px; }
+  .task-list .mock-section-header strong { font-size: 8px; }
+  .task-row i { width: 7px; height: 7px; }
+  .activity-panel { min-height: 56px; margin-top: 6px; }
+  .activity-bars { height: 38px; gap: 3px; }
+  .app-nav { min-height: 34px; padding-top: 4px; }
+
   .shared-core {
     width: 84px;
     min-height: 104px;
@@ -1759,14 +1927,22 @@ h3 {
   .device-label { font-size: 11px; }
   .app-status { margin-bottom: 10px; }
   .app-title { margin-bottom: 10px; font-size: 9px; }
-  .focus-panel { min-height: 70px; margin-bottom: 12px; padding: 8px; }
-  .focus-panel strong { font-size: 11px; }
-  .progress-ring { width: 34px; height: 34px; top: 17px; right: 8px; border-width: 4px; }
+  .app-title-ios { font-size: 12px; }
+  .focus-panel { min-height: 58px; margin-bottom: 6px; padding: 6px; }
+  .focus-panel strong { margin-bottom: 3px; font-size: 10px; }
+  .progress-ring { width: 28px; height: 28px; top: 14px; right: 6px; border-width: 3px; }
   .focus-panel .mock-button { min-width: 34px; font-size: 6px; }
-  .task-list { gap: 6px; font-size: 6px; }
-  .task-list strong { font-size: 7px; }
+  .task-list { padding: 5px; gap: 3px; font-size: 5.5px; }
+  .task-list .mock-section-header,
+  .task-list .mock-section-header strong { font-size: 6px; }
+  .task-row > span { gap: 4px; }
+  .task-row i { width: 6px; height: 6px; }
+  .activity-panel { min-height: 46px; margin-top: 5px; }
   .activity-bars { height: 28px; gap: 5px; }
-  .app-nav { font-size: 7px; }
+  .activity-bars i { width: 4px; }
+  .app-nav { min-height: 30px; font-size: 5.5px; }
+  .app-nav-icon { width: 24px; height: 14px; }
+  .app-nav-icon svg { width: 9px; height: 9px; }
 
   .shared-core {
     width: 54px;
