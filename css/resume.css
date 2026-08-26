@@ -1430,7 +1430,7 @@ h3 {
   max-width: 156px;
   height: 52px;
   display: grid;
-  grid-template: 1fr / 1fr;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
   overflow: hidden;
   background: #f8fafc;
   border: 1px solid var(--line);
