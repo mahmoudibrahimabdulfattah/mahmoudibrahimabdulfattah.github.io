@@ -1183,15 +1183,18 @@ a.work-item:focus-visible {
   height: 13px;
 }
 
-/* Sits in the slot the other cards give their store link, so the anatomy stays
-   the same across every card. It stays plain text there: a bordered pill would
-   read as clickable, and it would put more weight on internal work than on the
-   products that actually shipped. */
+/* A bordered pill, so the label reads as a classification rather than as
+   another store link. */
 .work-status {
   display: inline-block;
-  color: var(--muted);
-  font-size: 10.5px;
-  font-weight: 600;
+  margin-inline-end: auto;
+  padding: 3px 6px;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  font-size: 9px;
+  font-weight: 800;
   line-height: 1;
   letter-spacing: .05em;
   text-transform: uppercase;
