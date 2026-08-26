@@ -311,6 +311,10 @@ h3 {
   transition: opacity .2s var(--ease), transform .25s var(--ease);
 }
 
+.theme-icon-moon {
+  translate: 1px 0;
+}
+
 .theme-icon-sun,
 :root[data-theme="dark"] .theme-icon-moon {
   opacity: 0;
@@ -1133,20 +1137,29 @@ h3 {
 }
 
 .work-skill-shelf {
-  display: grid;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .work-skill-shelf span {
-  min-width: 0;
   min-height: 36px;
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   gap: 9px;
-  border-inline-end: 1px solid var(--line);
   font-size: 11px;
   font-weight: 700;
+  white-space: nowrap;
+}
+
+.skill-divider {
+  width: 1px;
+  height: 20px;
+  display: block;
+  flex: 0 0 1px;
+  background: var(--line);
 }
 
 .skill-logo {
@@ -1155,15 +1168,15 @@ h3 {
   flex: 0 0 20px;
 }
 
-.skill-apple { color: var(--ink); }
-.skill-flow { color: #1595e7; }
-.skill-git { color: #f4511e; }
-.skill-ci { color: #2f80ed; }
-.skill-graphql { color: var(--ink); }
-
-.work-skill-shelf span:last-child {
-  border-inline-end: 0;
+.skill-house {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
+
+.skill-graphql { color: #e10098; }
 
 .quiet-cta {
   width: 100%;
@@ -1721,13 +1734,15 @@ h3 {
   .proof-row strong { font-size: 12px; }
   .proof-row small { font-size: 9.5px; }
 
+  /* The divider needs the same air on both sides. Without the second column's
+     inline-start padding its icon starts exactly on the rule. */
   .proof-row > div:nth-child(odd) {
-    padding-inline: 0 20px;
+    padding-inline: 0 24px;
     border-inline-end: 1px solid var(--line);
   }
 
   .proof-row > div:nth-child(even) {
-    padding-inline: 0;
+    padding-inline: 24px 0;
     border-inline-end: 0;
   }
 
@@ -1757,18 +1772,21 @@ h3 {
   .expertise-columns article:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
 }
 
-@media (min-width: 641px) and (max-width: 1180px) {
+@media (min-width: 641px) and (max-width: 1039px) {
   .work-skill-shelf {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    display: grid;
+    grid-template-columns: max-content 1px max-content 1px max-content 1px max-content 1px max-content;
+    grid-auto-rows: 36px;
+    align-items: center;
+    justify-content: space-between;
     row-gap: 12px;
   }
 
   .work-skill-shelf span {
     gap: 7px;
-    overflow-wrap: anywhere;
+    justify-content: flex-start;
     font-size: 10px;
     line-height: 1.3;
-    text-align: center;
   }
 
   .work-skill-shelf .skill-logo {
@@ -1777,7 +1795,7 @@ h3 {
     flex-basis: 18px;
   }
 
-  .work-skill-shelf span:nth-child(5n) { border-inline-end: 0; }
+  .work-skill-shelf .skill-divider:nth-of-type(5) { display: none; }
 }
 
 @media (max-width: 900px) {
@@ -2061,7 +2079,8 @@ h3 {
     column-gap: 8px;
   }
 
-  .proof-row > div:nth-child(odd) { padding-inline: 0 12px; }
+  .proof-row > div:nth-child(odd) { padding-inline: 0 14px; }
+  .proof-row > div:nth-child(even) { padding-inline: 14px 0; }
 
   .proof-row .icon {
     width: 18px;
@@ -2171,14 +2190,17 @@ h3 {
   .project-sgs { font-size: 17px; }
 
   .work-skill-shelf {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 12px;
   }
 
   .work-skill-shelf span {
-    border-inline-end: 0;
+    justify-content: flex-start;
   }
 
-  .work-skill-shelf span:nth-child(odd) { border-inline-end: 1px solid var(--line); }
+  .work-skill-shelf .skill-divider { display: none; }
 
   .quiet-cta {
     align-items: flex-start;
