@@ -280,6 +280,7 @@ h3 {
 }
 
 .theme-toggle {
+  position: relative;
   width: 40px;
   height: 40px;
   padding: 0;
@@ -301,18 +302,17 @@ h3 {
 
 .theme-icon {
   position: absolute;
+  top: 50%;
+  left: 50%;
   width: 20px;
   height: 20px;
+  margin: -10px 0 0 -10px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
   transition: opacity .2s var(--ease), transform .25s var(--ease);
-}
-
-.theme-icon-moon {
-  translate: 1px 0;
 }
 
 .theme-icon-sun,
@@ -560,9 +560,8 @@ h3 {
   position: relative;
   min-height: 600px;
   display: grid;
-  grid-template-columns: 1fr 120px 1fr;
+  grid-template-columns: max-content minmax(0, 1fr) max-content minmax(0, 1fr) max-content;
   align-items: center;
-  gap: 6px;
   isolation: isolate;
 }
 
@@ -582,6 +581,8 @@ h3 {
 }
 
 .device-proof {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -594,6 +595,12 @@ h3 {
 
 .device-proof-ios {
   transform: none;
+}
+
+.core-connector {
+  z-index: 0;
+  width: 100%;
+  border-top: 2px dashed #8eb0f6;
 }
 
 .device-label {
@@ -949,19 +956,6 @@ h3 {
   border-radius: var(--radius);
 }
 
-.shared-core::before,
-.shared-core::after {
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  width: 56px;
-  border-top: 2px dashed #8eb0f6;
-  content: "";
-}
-
-.shared-core::before { right: 100%; }
-.shared-core::after { left: 100%; }
-
 .core-mark {
   width: 32px;
   height: 32px;
@@ -1176,8 +1170,6 @@ h3 {
   stroke-linejoin: round;
 }
 
-.skill-graphql { color: #e10098; }
-
 .quiet-cta {
   width: 100%;
   min-height: 80px;
@@ -1293,7 +1285,6 @@ h3 {
 
   .device-stage {
     min-height: 440px;
-    grid-template-columns: 1fr 84px 1fr;
   }
 
   .phone {
@@ -1326,8 +1317,6 @@ h3 {
     gap: 6px;
   }
 
-  .shared-core::before,
-  .shared-core::after { width: 38px; }
   .core-mark { width: 28px; height: 28px; }
   .shared-core strong { font-size: .66rem; }
   .concept-note { display: none; }
@@ -1748,16 +1737,12 @@ h3 {
 
   .device-stage {
     min-height: 560px;
-    grid-template-columns: 1fr 90px 1fr;
   }
 
   .shared-core {
     width: 88px;
     min-height: 116px;
   }
-
-  .shared-core::before,
-  .shared-core::after { width: 36px; }
 
   .featured-work {
     grid-template-columns: repeat(2, 1fr);
@@ -1902,6 +1887,8 @@ h3 {
     margin-inline: auto;
     grid-template-columns: 1fr 86px 1fr;
   }
+
+  .core-connector { display: none; }
 
   .phone { width: min(30vw, 170px); }
 
@@ -2135,8 +2122,6 @@ h3 {
 
   .core-mark { width: 22px; height: 22px; }
   .shared-core strong { font-size: 8px; }
-  .shared-core::before, .shared-core::after { width: 16px; }
-
   .section { padding-block: 56px; }
 
   .section-work { padding-block: 0; }
