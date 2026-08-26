@@ -1,3 +1,9 @@
+/* Any `display` rule outsells the browser's own [hidden] styling, which silently
+   breaks every fallback that toggles the attribute. Keep the attribute winning. */
+[hidden] {
+  display: none !important;
+}
+
 :root {
   --blue: #155eef;
   --blue-dark: #004eeb;
@@ -1414,15 +1420,43 @@ h3 {
 .experience-role {
   min-width: 0;
   display: grid;
-  grid-template-columns: 52px minmax(0, 1fr);
+  grid-template-columns: 156px minmax(0, 1fr);
   align-items: start;
   gap: 16px;
 }
 
-.project-monogram.experience-monogram {
-  width: 52px;
+.experience-logo {
+  width: min(var(--experience-logo-width), 100%);
+  max-width: 156px;
   height: 52px;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  overflow: hidden;
+  background: #f8fafc;
+  border: 1px solid var(--line);
   border-radius: 12px;
+}
+
+.experience-logo-square { --experience-logo-width: 52px; }
+.experience-logo-ispace { --experience-logo-width: 147px; }
+.experience-logo-spirit { --experience-logo-width: 156px; }
+
+.experience-logo > img,
+.experience-logo > .experience-monogram {
+  grid-area: 1 / 1;
+}
+
+.experience-logo > img {
+  width: 100%;
+  height: 100%;
+  padding: 7px;
+  object-fit: contain;
+}
+
+.project-monogram.experience-monogram {
+  width: 100%;
+  height: 100%;
+  border-radius: 11px;
   font-size: 17px;
 }
 
