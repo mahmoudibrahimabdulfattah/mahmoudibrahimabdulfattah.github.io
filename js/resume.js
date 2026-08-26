@@ -81,32 +81,61 @@
   const contactStrip = document.querySelector('.contact-strip');
 
   if (floatingContact) {
-    let contactThreshold = floatingContact.offsetTop + floatingContact.offsetHeight;
-    let contactStripVisible = false;
+    // A dead band around the threshold: without it a pixel of scroll jitter is
+    // enough to flip the bar back and forth.
+    const HYSTERESIS = 12;
+    const RELEASE_RATIO = 0.88;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    const syncFloatingContact = () => {
-      const shouldPin = window.scrollY > contactThreshold && !contactStripVisible;
-      floatingContact.classList.toggle('is-fixed', shouldPin);
-    };
+    let dockAt = 0;
+    let releaseAt = Infinity;
+    let pinned = false;
+    let settleTimer = 0;
 
-    const measureFloatingContact = () => {
+    const measure = () => {
+      const wasPinned = pinned;
       floatingContact.classList.remove('is-fixed');
-      contactThreshold = floatingContact.offsetTop + floatingContact.offsetHeight;
-      syncFloatingContact();
+      dockAt = floatingContact.offsetTop + floatingContact.offsetHeight;
+      releaseAt = contactStrip ? contactStrip.offsetTop : Infinity;
+      floatingContact.classList.toggle('is-fixed', wasPinned);
     };
 
-    // The closing contact strip already offers the same action, so retire the
-    // floating bar instead of stacking two identical calls to action.
-    if (contactStrip && 'IntersectionObserver' in window) {
-      new IntersectionObserver((entries) => {
-        contactStripVisible = entries[0].isIntersecting;
-        syncFloatingContact();
-      }, { rootMargin: '0px 0px -12% 0px' }).observe(contactStrip);
-    }
+    // One frame of offset so the bar lifts into place instead of appearing.
+    // The timeout is a floor: requestAnimationFrame does not run in a hidden
+    // tab, and the bar must never be left stranded at opacity zero.
+    const settle = () => {
+      if (reducedMotion.matches) return;
+      floatingContact.classList.add('is-settling');
+      // Force the offset state to be painted; without a read here the browser
+      // can batch the add and the remove into one recalc and skip the motion.
+      void floatingContact.offsetHeight;
+      const clear = () => {
+        clearTimeout(settleTimer);
+        floatingContact.classList.remove('is-settling');
+      };
+      settleTimer = setTimeout(clear, 120);
+      requestAnimationFrame(() => requestAnimationFrame(clear));
+    };
 
-    window.addEventListener('scroll', syncFloatingContact, { passive: true });
-    window.addEventListener('resize', measureFloatingContact);
-    syncFloatingContact();
+    // Pure arithmetic against cached offsets — no layout read, so this is safe
+    // to run straight from the scroll handler on every event.
+    const evaluate = () => {
+      const y = window.scrollY;
+      const stripInView = y + window.innerHeight * RELEASE_RATIO > releaseAt;
+      const edge = dockAt + (pinned ? -HYSTERESIS : HYSTERESIS);
+      const next = y > edge && !stripInView;
+
+      if (next === pinned) return;
+      pinned = next;
+      floatingContact.classList.toggle('is-fixed', pinned);
+      settle();
+    };
+
+    window.addEventListener('scroll', evaluate, { passive: true });
+    window.addEventListener('resize', () => { measure(); evaluate(); });
+
+    measure();
+    evaluate();
   }
 
   const navigationLinks = Array.from(document.querySelectorAll('.primary-nav a[href^="#"]'));

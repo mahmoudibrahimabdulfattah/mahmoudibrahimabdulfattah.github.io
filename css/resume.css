@@ -1175,21 +1175,39 @@ h3 {
   transform: translateY(-2px);
 }
 
+/* The wrapper never leaves the flow. Docking used to make it `fixed`, which took
+   96px out of the document; near the foot of the page the browser then clamped
+   the scroll position, which pushed the bar back into flow, which restored the
+   height — a loop the reader saw as shaking. Only the bar inside moves now, so
+   the document height never changes. */
 .floating-contact {
   position: relative;
   z-index: 20;
   width: var(--page);
+  min-height: 80px;
   margin: 16px auto 0;
-  transition: opacity .28s var(--ease);
 }
 
-.floating-contact.is-fixed {
+.floating-contact > .quiet-cta {
+  transition: opacity .3s var(--ease), transform .3s var(--ease),
+              border-color .2s var(--ease);
+}
+
+.floating-contact.is-fixed > .quiet-cta {
   position: fixed;
   z-index: 90;
   right: 0;
   bottom: 16px;
   left: 0;
-  margin: 0 auto;
+  width: var(--page);
+  margin-inline: auto;
+}
+
+/* One frame of offset at the moment of docking, so the bar lifts into place
+   instead of appearing. */
+.floating-contact.is-settling > .quiet-cta {
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .quiet-cta-icon {
