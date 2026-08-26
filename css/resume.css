@@ -967,10 +967,7 @@ h3 {
 }
 
 .process {
-  border-top: 0;
-  background: var(--surface-soft);
-  box-shadow: 0 0 0 100vmax var(--surface-soft);
-  clip-path: inset(0 -100vmax);
+  border-top: 1px solid var(--line-soft);
 }
 
 .section-heading {
@@ -1294,11 +1291,13 @@ h3 {
 }
 
 .process-list {
+  --process-gap: 56px;
+  --process-arrow-offset: -28px;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 56px;
+  gap: var(--process-gap);
   margin-top: 46px;
   position: relative;
   list-style: none;
@@ -1307,9 +1306,9 @@ h3 {
 .process-list::before {
   position: absolute;
   z-index: 0;
-  top: 93px;
-  right: 8%;
-  left: 8%;
+  right: 0;
+  bottom: 4px;
+  left: 0;
   border-top: 1px solid var(--blue);
   content: "";
   pointer-events: none;
@@ -1318,10 +1317,35 @@ h3 {
 .process-list li {
   position: relative;
   z-index: 1;
+  padding-bottom: 36px;
   display: grid;
   grid-template-columns: 54px 70px minmax(0, 1fr);
   align-items: flex-start;
   gap: 18px;
+}
+
+.process-list li::before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--blue);
+  border-radius: 50%;
+  content: "";
+  transform: translateX(-50%);
+}
+
+.process-list li:not(:last-child)::after {
+  position: absolute;
+  right: var(--process-arrow-offset);
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  border: solid var(--blue);
+  border-width: 1px 1px 0 0;
+  content: "";
+  transform: translateX(50%) rotate(45deg);
 }
 
 .process-step-marker {
@@ -1776,6 +1800,11 @@ h3 {
   .process-list li + li {
     padding: 24px 0;
     border-bottom: 1px solid var(--line);
+  }
+
+  .process-list li::before,
+  .process-list li::after {
+    display: none;
   }
 
   .process-list li:last-child { border-bottom: 0; }
