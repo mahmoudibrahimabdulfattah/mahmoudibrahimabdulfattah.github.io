@@ -42,6 +42,30 @@
     element.textContent = `${years}+ years`;
   });
 
+  const workToggle = document.querySelector('[data-work-toggle]');
+  const workMore = document.querySelector('#work-more');
+  const workToggleLabel = workToggle?.querySelector('[data-work-toggle-label]');
+
+  if (workToggle && workMore && workToggleLabel) {
+    const setWorkExpanded = (expanded) => {
+      workToggle.setAttribute('aria-expanded', String(expanded));
+      workToggleLabel.textContent = expanded ? 'Show less work' : 'Show 5 more projects';
+      workMore.setAttribute('aria-hidden', String(!expanded));
+      workMore.toggleAttribute('inert', !expanded);
+    };
+
+    // Progressive enhancement: the extra projects and no button are the HTML
+    // defaults. Collapse them only after this working control is available.
+    workMore.classList.add('is-initializing');
+    setWorkExpanded(false);
+    workToggle.hidden = false;
+    requestAnimationFrame(() => workMore.classList.remove('is-initializing'));
+
+    workToggle.addEventListener('click', () => {
+      setWorkExpanded(workToggle.getAttribute('aria-expanded') !== 'true');
+    });
+  }
+
   const menuButton = document.querySelector('[data-menu-toggle]');
   const menu = document.querySelector('[data-menu]');
 

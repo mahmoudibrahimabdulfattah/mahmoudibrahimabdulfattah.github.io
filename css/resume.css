@@ -1040,6 +1040,24 @@ h3 {
   letter-spacing: -.025em;
 }
 
+.work-toggle {
+  min-height: 36px;
+  padding: 6px 0;
+  appearance: none;
+  color: var(--blue);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.work-toggle .icon {
+  transition: transform .3s var(--ease);
+}
+
+.work-toggle[aria-expanded="true"] .icon {
+  transform: rotate(180deg);
+}
+
 .featured-work {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1047,15 +1065,60 @@ h3 {
 }
 
 .work-item {
+  position: relative;
   min-width: 0;
-  min-height: 148px;
+  min-height: 180px;
   padding: 16px;
   display: grid;
-  grid-template-columns: 82px minmax(0, 1fr);
+  grid-template-columns: 72px minmax(0, 1fr);
+  align-items: start;
   gap: 16px;
+  color: var(--ink);
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 8px;
+  text-decoration: none;
+  transition: transform .3s var(--ease), background-color .3s var(--ease), border-color .3s var(--ease);
+}
+
+a.work-item:hover {
+  background: var(--surface-blue);
+  border-color: var(--blue);
+  transform: translateY(-3px);
+}
+
+a.work-item:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+  transform: translateY(-3px);
+}
+
+.work-item-internal {
+  background: var(--surface-soft);
+}
+
+.project-art {
+  width: 72px;
+  height: 72px;
+  display: block;
+}
+
+.project-icon,
+.project-art > .project-monogram {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+}
+
+.project-icon {
+  object-fit: cover;
+}
+
+.work-item-content {
+  min-width: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-monogram {
@@ -1073,36 +1136,64 @@ h3 {
 .project-news { background: #ef002f; }
 .project-cv { background: #7f4bd7; }
 .project-sgs { background: #ff6b0b; font-size: 20px; }
+.project-smart { background: #123047; font-size: 20px; }
+.project-we { background: #64288f; font-size: 20px; }
+.project-mystery { background: #13795b; font-size: 20px; }
+.project-data { background: #245b78; font-size: 20px; }
 
 .work-title-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 6px 12px;
 }
 
 .work-title-row h3 {
-  margin: 4px 0 8px;
+  margin: 2px 0 6px;
   font-size: 15px;
+  line-height: 1.35;
 }
 
-.work-title-row a {
-  display: none;
-}
-
-.work-title-row a:hover {
+.work-destination {
+  min-height: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   color: var(--blue);
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.work-destination .icon {
+  width: 13px;
+  height: 13px;
+}
+
+.work-status {
+  padding: 4px 7px;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
 .work-item p {
   margin: 0 0 12px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 12.5px;
   line-height: 1.5;
 }
 
 .tag-list {
-  margin: 0;
+  margin: auto 0 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -1118,6 +1209,34 @@ h3 {
   font-size: 11px;
   line-height: 1;
   white-space: nowrap;
+}
+
+.work-more {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition: grid-template-rows .45s var(--ease), opacity .24s ease-out, visibility 0s;
+}
+
+.work-more-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.featured-work-more {
+  padding-top: 16px;
+}
+
+.work-more[aria-hidden="true"] {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows .45s var(--ease), opacity .2s ease-out, visibility 0s .45s;
+}
+
+.work-more.is-initializing {
+  transition: none;
 }
 
 .work-proof-footer {
@@ -2178,13 +2297,22 @@ h3 {
     gap: 14px;
   }
 
+  .project-art {
+    width: 64px;
+    height: 64px;
+  }
+
   .project-monogram {
     width: 64px;
     height: 64px;
     font-size: 23px;
   }
 
-  .project-sgs { font-size: 17px; }
+  .project-sgs,
+  .project-smart,
+  .project-we,
+  .project-mystery,
+  .project-data { font-size: 17px; }
 
   .work-skill-shelf {
     display: grid;
