@@ -980,7 +980,7 @@ h3 {
 }
 
 .process {
-  border-top: 1px solid var(--line-soft);
+  border-top: 0;
 }
 
 .section-heading {
@@ -1160,7 +1160,19 @@ h3 {
   width: 20px;
   height: 20px;
   flex: 0 0 20px;
+  transform: scale(var(--skill-logo-scale, 1));
 }
+
+.skill-logo--kotlin,
+.skill-logo--kmp { --skill-logo-scale: .82; }
+.skill-logo--compose { --skill-logo-scale: .9; }
+.skill-logo--coroutines,
+.skill-logo--swift,
+.skill-logo--swiftui { --skill-logo-scale: .86; }
+.skill-logo--architecture { --skill-logo-scale: 1.04; }
+.skill-logo--firebase { --skill-logo-scale: 1.12; }
+.skill-logo--git { --skill-logo-scale: .9; }
+.skill-logo--cicd { --skill-logo-scale: 1.08; }
 
 .skill-house {
   fill: none;

@@ -79,6 +79,7 @@
 
   const floatingContact = document.querySelector('.floating-contact');
   const contactStrip = document.querySelector('.contact-strip');
+  const header = document.querySelector('[data-header]');
 
   if (floatingContact) {
     // A dead band around the threshold: without it a pixel of scroll jitter is
@@ -95,7 +96,8 @@
     const measure = () => {
       const wasPinned = pinned;
       floatingContact.classList.remove('is-fixed');
-      dockAt = floatingContact.offsetTop + floatingContact.offsetHeight;
+      const headerHeight = header?.offsetHeight || 0;
+      dockAt = floatingContact.offsetTop + floatingContact.offsetHeight - headerHeight;
       releaseAt = contactStrip ? contactStrip.offsetTop : Infinity;
       floatingContact.classList.toggle('is-fixed', wasPinned);
     };
