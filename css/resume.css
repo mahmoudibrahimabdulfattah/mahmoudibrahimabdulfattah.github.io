@@ -1099,10 +1099,6 @@ a.work-item:focus-visible {
   transform: translateY(-3px);
 }
 
-.work-item-internal {
-  background: var(--surface-soft);
-}
-
 .project-art {
   width: 72px;
   height: 72px;
