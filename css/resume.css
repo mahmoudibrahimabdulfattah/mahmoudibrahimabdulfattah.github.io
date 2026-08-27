@@ -245,7 +245,6 @@ h3 {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 18px;
   color: var(--ink);
   text-decoration: none;
   font-weight: 800;
@@ -260,8 +259,28 @@ h3 {
   fill: currentColor;
 }
 
+/* Collapsed rather than hidden: a `visibility: hidden` name would keep its
+   box, leaving 177px of invisible link that still jumps to the top of the
+   page when clicked. Nothing sits to the right of the brand — the nav is
+   anchored by `margin-left: auto` — so the width animating open moves
+   nothing else on the row. */
 .brand-name {
+  max-width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  opacity: 0;
   font-size: 20px;
+  white-space: nowrap;
+  transition:
+    max-width .34s var(--ease),
+    margin-left .34s var(--ease),
+    opacity .22s var(--ease);
+}
+
+.site-header[data-scrolled="true"] .brand-name {
+  max-width: 14rem;
+  margin-left: 18px;
+  opacity: 1;
 }
 
 .primary-nav {
@@ -451,6 +470,18 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* The name labels the face rather than opening the message column, so the
+   headline stays the first thing read on the right. */
+.identity-name {
+  margin: 16px 0 0;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .portrait-frame {
@@ -2151,22 +2182,35 @@ a.work-item:focus-visible {
   .hero-intro {
     grid-template-columns: 64px minmax(0, 1fr);
     grid-template-areas:
+      "portrait name"
       "portrait role"
       "headline headline"
-      "lede lede"
+      "lede     lede"
       "actions actions";
     column-gap: 12px;
-    row-gap: 14px;
+    row-gap: 6px;
   }
 
-  .identity-line {
-    grid-area: portrait;
-    flex-direction: row;
-    align-items: center;
+  /* Promotes the portrait and the name to grid items so each can take its own
+     area beside the 64px avatar, the same way `.hero-message` does below. */
+  .identity-line { display: contents; }
+
+  .identity-name {
+    grid-area: name;
+    align-self: center;
+    margin: 0;
+    font-size: 15px;
     text-align: left;
   }
 
-  .portrait-frame { width: 64px; height: 64px; }
+  /* The avatar spans the name and role rows, so it centres against the pair
+     rather than hanging from the top of the first one. */
+  .portrait-frame {
+    grid-area: portrait;
+    align-self: center;
+    width: 64px;
+    height: 64px;
+  }
 
   .hero-message { display: contents; }
 
@@ -2435,6 +2479,8 @@ a.work-item:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+
+  .brand-name { transition: none; }
 
   *, *::before, *::after {
     scroll-behavior: auto !important;

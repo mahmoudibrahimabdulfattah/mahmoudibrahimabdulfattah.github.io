@@ -164,6 +164,36 @@
     evaluate();
   }
 
+  const brandName = document.querySelector('[data-brand-name]');
+  const heroName = document.querySelector('.identity-name');
+
+  if (header && brandName && heroName) {
+    // The header takes the name back at the moment the hero's own copy of it
+    // goes under the header, so the name is never visible in both places and
+    // never absent from both.
+    const BRAND_HYSTERESIS = 10;
+    let revealAt = 0;
+    let revealed = false;
+
+    const measureBrand = () => {
+      revealAt = heroName.offsetTop + heroName.offsetHeight - header.offsetHeight;
+    };
+
+    const evaluateBrand = () => {
+      const edge = revealAt + (revealed ? -BRAND_HYSTERESIS : BRAND_HYSTERESIS);
+      const next = window.scrollY > edge;
+      if (next === revealed) return;
+      revealed = next;
+      header.setAttribute('data-scrolled', String(revealed));
+    };
+
+    window.addEventListener('scroll', evaluateBrand, { passive: true });
+    window.addEventListener('resize', () => { measureBrand(); evaluateBrand(); });
+
+    measureBrand();
+    evaluateBrand();
+  }
+
   const navigationLinks = Array.from(document.querySelectorAll('.primary-nav a[href^="#"]'));
   const sections = navigationLinks
     .map((link) => document.querySelector(link.getAttribute('href')))
