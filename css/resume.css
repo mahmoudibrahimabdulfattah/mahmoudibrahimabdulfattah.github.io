@@ -1603,6 +1603,13 @@ a.work-item:focus-visible {
   border-bottom: 1px solid var(--line);
 }
 
+/* The separator belongs between rows, not after the last one, where it stacked
+   84px above the next section's own rule and read as two stray lines with
+   nothing between them. `.process-list` already drops its final border. */
+.experience-item:last-child {
+  border-bottom: 0;
+}
+
 .experience-meta {
   display: flex;
   flex-direction: column;
