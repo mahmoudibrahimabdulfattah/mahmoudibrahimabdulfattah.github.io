@@ -116,14 +116,24 @@
     let releaseAt = Infinity;
     let pinned = false;
     let settleTimer = 0;
+    let naturalHeight = 0;
 
-    const measure = () => {
+    // The only read that needs the bar un-docked: while docked the inner element
+    // is out of flow and the wrapper collapses to its min-height. Undocking to
+    // read it forces two reflows, so it is kept out of the hot path below.
+    const measureHeight = () => {
       const wasPinned = pinned;
       floatingContact.classList.remove('is-fixed');
-      const headerHeight = header?.offsetHeight || 0;
-      dockAt = floatingContact.offsetTop + floatingContact.offsetHeight - headerHeight;
-      releaseAt = contactStrip ? contactStrip.offsetTop : Infinity;
+      naturalHeight = floatingContact.offsetHeight;
       floatingContact.classList.toggle('is-fixed', wasPinned);
+    };
+
+    // Pure reads. The wrapper never leaves the flow, so its offsetTop is valid
+    // whether or not the bar is docked.
+    const measure = () => {
+      const headerHeight = header?.offsetHeight || 0;
+      dockAt = floatingContact.offsetTop + naturalHeight - headerHeight;
+      releaseAt = contactStrip ? contactStrip.offsetTop : Infinity;
     };
 
     // One frame of offset so the bar lifts into place instead of appearing.
@@ -158,8 +168,43 @@
     };
 
     window.addEventListener('scroll', evaluate, { passive: true });
-    window.addEventListener('resize', () => { measure(); evaluate(); });
+    window.addEventListener('resize', () => { measureHeight(); measure(); evaluate(); });
 
+    // The work panel animates `grid-template-rows` over .45s, so a single
+    // measurement on click would read a mid-animation height. The observer
+    // fires throughout the expansion, which keeps the threshold correct on
+    // every frame instead of snapping to it at the end.
+    const workPanel = document.querySelector('.work-more-inner');
+    if (workPanel && typeof ResizeObserver === 'function') {
+      new ResizeObserver(() => { measure(); evaluate(); }).observe(workPanel);
+    }
+
+    // The observer above covers the frames of the expansion, but it is delivered
+    // by the rendering loop, which does not run in a background tab. The click
+    // and the timeout floor are what actually guarantee the threshold is correct
+    // once the panel has settled — the same reason `settle()` carries a timeout
+    // next to its requestAnimationFrame.
+    const workToggleControl = document.querySelector('[data-work-toggle]');
+    const workMorePanel = document.querySelector('#work-more');
+    const remeasure = () => { measure(); evaluate(); };
+
+    if (workToggleControl) {
+      let panelTimer = 0;
+      workToggleControl.addEventListener('click', () => {
+        remeasure();
+        clearTimeout(panelTimer);
+        // The panel transitions `grid-template-rows` over .45s.
+        panelTimer = setTimeout(remeasure, 500);
+      });
+    }
+
+    if (workMorePanel) {
+      workMorePanel.addEventListener('transitionend', (event) => {
+        if (event.propertyName === 'grid-template-rows') remeasure();
+      });
+    }
+
+    measureHeight();
     measure();
     evaluate();
   }
