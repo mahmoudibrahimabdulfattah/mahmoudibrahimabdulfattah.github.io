@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" role="img" aria-label="Interactive CV">
+  <path fill="#155EEF" d="M54,54 m-54,0 a54,54 0 1,1 108,0 a54,54 0 1,1 -108,0"/>
+  <path fill="#FFFFFF" d="M34,38 L34,70 L40,70 L40,48 L48,60 L54,60 L62,48 L62,70 L68,70 L68,38 L62,38 L51,54 L40,38 Z"/>
+  <path fill="#84ADFF" d="M74,66 m-4,0 a4,4 0 1,1 8,0 a4,4 0 1,1 -8,0"/>
+</svg>
