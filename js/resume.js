@@ -66,6 +66,25 @@
     });
   }
 
+  const newsToggle = document.querySelector('[data-news-toggle]');
+  const newsDetails = document.querySelector('#news-shorts-details');
+  const newsToggleLabel = newsToggle?.querySelector('[data-news-toggle-label]');
+
+  if (newsToggle && newsDetails && newsToggleLabel) {
+    const setNewsExpanded = (expanded) => {
+      newsToggle.setAttribute('aria-expanded', String(expanded));
+      newsToggleLabel.textContent = expanded ? 'Hide project details' : 'View project details';
+      newsDetails.setAttribute('aria-hidden', String(!expanded));
+      newsDetails.toggleAttribute('inert', !expanded);
+    };
+
+    setNewsExpanded(false);
+
+    newsToggle.addEventListener('click', () => {
+      setNewsExpanded(newsToggle.getAttribute('aria-expanded') !== 'true');
+    });
+  }
+
   const menuButton = document.querySelector('[data-menu-toggle]');
   const menu = document.querySelector('[data-menu]');
 
@@ -170,13 +189,13 @@
     window.addEventListener('scroll', evaluate, { passive: true });
     window.addEventListener('resize', () => { measureHeight(); measure(); evaluate(); });
 
-    // The work panel animates `grid-template-rows` over .45s, so a single
+    // Both disclosures animate `grid-template-rows` over .45s, so a single
     // measurement on click would read a mid-animation height. The observer
-    // fires throughout the expansion, which keeps the threshold correct on
-    // every frame instead of snapping to it at the end.
-    const workPanel = document.querySelector('.work-more-inner');
-    if (workPanel && typeof ResizeObserver === 'function') {
-      new ResizeObserver(() => { measure(); evaluate(); }).observe(workPanel);
+    // fires throughout each expansion and keeps the threshold correct.
+    const disclosureInners = document.querySelectorAll('.work-more-inner, .news-details-inner');
+    if (disclosureInners.length && typeof ResizeObserver === 'function') {
+      const disclosureObserver = new ResizeObserver(() => { measure(); evaluate(); });
+      disclosureInners.forEach((panel) => disclosureObserver.observe(panel));
     }
 
     // The observer above covers the frames of the expansion, but it is delivered
@@ -184,25 +203,26 @@
     // and the timeout floor are what actually guarantee the threshold is correct
     // once the panel has settled — the same reason `settle()` carries a timeout
     // next to its requestAnimationFrame.
-    const workToggleControl = document.querySelector('[data-work-toggle]');
-    const workMorePanel = document.querySelector('#work-more');
+    const disclosureControls = document.querySelectorAll('[data-work-toggle], [data-news-toggle]');
+    const disclosurePanels = document.querySelectorAll('#work-more, #news-shorts-details');
     const remeasure = () => { measure(); evaluate(); };
 
-    if (workToggleControl) {
+    if (disclosureControls.length) {
       let panelTimer = 0;
-      workToggleControl.addEventListener('click', () => {
-        remeasure();
-        clearTimeout(panelTimer);
-        // The panel transitions `grid-template-rows` over .45s.
-        panelTimer = setTimeout(remeasure, 500);
+      disclosureControls.forEach((control) => {
+        control.addEventListener('click', () => {
+          remeasure();
+          clearTimeout(panelTimer);
+          panelTimer = setTimeout(remeasure, 500);
+        });
       });
     }
 
-    if (workMorePanel) {
-      workMorePanel.addEventListener('transitionend', (event) => {
+    disclosurePanels.forEach((panel) => {
+      panel.addEventListener('transitionend', (event) => {
         if (event.propertyName === 'grid-template-rows') remeasure();
       });
-    }
+    });
 
     measureHeight();
     measure();

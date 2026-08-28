@@ -530,6 +530,7 @@ h3 {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 14px;
 }
 
@@ -1095,6 +1096,13 @@ h3 {
   gap: 16px;
 }
 
+/* Cards share a row height so their tag rows line up. An open disclosure would
+   drag that shared height up with it and leave the other three cards holding a
+   void, so while it is open every card falls back to its own content height. */
+.featured-work:has(#news-shorts-details[aria-hidden="false"]) {
+  align-items: start;
+}
+
 .work-item {
   position: relative;
   min-width: 0;
@@ -1112,7 +1120,8 @@ h3 {
   transition: transform .3s var(--ease), background-color .3s var(--ease), border-color .3s var(--ease);
 }
 
-a.work-item:hover {
+a.work-item:hover,
+.work-item-news:hover {
   background: var(--surface-blue);
   border-color: var(--blue);
   transform: translateY(-3px);
@@ -1125,6 +1134,12 @@ a.work-item:hover {
 }
 
 a.work-item:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+  transform: translateY(-3px);
+}
+
+.work-item-news:has(.news-toggle:focus-visible) {
   outline: 3px solid var(--blue);
   outline-offset: 4px;
   transform: translateY(-3px);
@@ -1152,6 +1167,11 @@ a.work-item:focus-visible {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.work-item-news {
+  row-gap: 0;
+  cursor: pointer;
 }
 
 .project-monogram {
@@ -1182,6 +1202,11 @@ a.work-item:focus-visible {
   gap: 6px 12px;
 }
 
+.work-title-row .work-destination {
+  position: relative;
+  z-index: 1;
+}
+
 .work-title-row:has(.work-status) {
   display: block;
 }
@@ -1207,6 +1232,20 @@ a.work-item:focus-visible {
   font-weight: 700;
   line-height: 1.2;
   white-space: nowrap;
+}
+
+a.work-destination {
+  text-decoration: none;
+}
+
+a.work-destination:hover {
+  color: var(--blue-dark);
+}
+
+a.work-destination:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 3px;
 }
 
 .work-destination .icon {
@@ -1283,6 +1322,102 @@ a.work-item:focus-visible {
 
 .work-more.is-initializing {
   transition: none;
+}
+
+.news-toggle {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  color: var(--blue);
+  background: transparent;
+  border: 0;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.news-toggle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.news-toggle:focus-visible {
+  outline: none;
+}
+
+.news-toggle .icon {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 18px;
+  height: 18px;
+  transition: transform .3s var(--ease);
+}
+
+.news-toggle[aria-expanded="true"] .icon {
+  transform: rotate(180deg);
+}
+
+.news-details {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition: grid-template-rows .45s var(--ease), opacity .24s ease-out, visibility 0s;
+}
+
+.news-details-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.news-details[aria-hidden="true"] {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows .45s var(--ease), opacity .2s ease-out, visibility 0s .45s;
+}
+
+.news-details-list {
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+.news-details-list > div {
+  padding-block: 10px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.news-details-list dt {
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.news-details-list dd {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.news-details-list code {
+  color: var(--ink-soft);
+  font-family: inherit;
+  font-weight: 700;
+}
+
+.news-source-link {
+  min-height: 36px;
+  margin-top: 2px;
+  font-size: 11px;
 }
 
 .work-proof-footer {
