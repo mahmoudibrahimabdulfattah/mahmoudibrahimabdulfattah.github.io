@@ -1,4 +1,27 @@
 (() => {
+  const locale = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+  const copy = locale === 'ar' ? {
+    switchToLight: 'التبديل إلى الوضع الفاتح',
+    switchToDark: 'التبديل إلى الوضع الداكن',
+    showLessWork: 'عرض مشاريع أقل',
+    showMoreWork: 'عرض 5 مشاريع أخرى',
+    hideDetails: 'إخفاء تفاصيل المشروع',
+    viewDetails: 'عرض تفاصيل المشروع',
+    openNavigation: 'فتح قائمة التنقل',
+    closeNavigation: 'إغلاق قائمة التنقل',
+    years: (years) => `${years}+ سنوات`
+  } : {
+    switchToLight: 'Switch to light mode',
+    switchToDark: 'Switch to dark mode',
+    showLessWork: 'Show less work',
+    showMoreWork: 'Show 5 more projects',
+    hideDetails: 'Hide project details',
+    viewDetails: 'View project details',
+    openNavigation: 'Open navigation',
+    closeNavigation: 'Close navigation',
+    years: (years) => `${years}+ years`
+  };
+
   const themeButton = document.querySelector('[data-theme-toggle]');
   const themeLabel = document.querySelector('[data-theme-label]');
   const themeColor = document.querySelector('[data-theme-color]');
@@ -9,7 +32,7 @@
     document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
     document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
     themeButton?.setAttribute('aria-pressed', String(isDark));
-    if (themeLabel) themeLabel.textContent = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    if (themeLabel) themeLabel.textContent = isDark ? copy.switchToLight : copy.switchToDark;
     themeColor?.setAttribute('content', isDark ? '#0c111d' : '#ffffff');
     if (persist) {
       try { localStorage.setItem('mk-theme', isDark ? 'dark' : 'light'); } catch (_) {}
@@ -39,7 +62,7 @@
   });
 
   document.querySelectorAll('[data-years]').forEach((element) => {
-    element.textContent = `${years}+ years`;
+    element.textContent = copy.years(years);
   });
 
   const workToggle = document.querySelector('[data-work-toggle]');
@@ -49,7 +72,7 @@
   if (workToggle && workMore && workToggleLabel) {
     const setWorkExpanded = (expanded) => {
       workToggle.setAttribute('aria-expanded', String(expanded));
-      workToggleLabel.textContent = expanded ? 'Show less work' : 'Show 5 more projects';
+      workToggleLabel.textContent = expanded ? copy.showLessWork : copy.showMoreWork;
       workMore.setAttribute('aria-hidden', String(!expanded));
       workMore.toggleAttribute('inert', !expanded);
     };
@@ -73,11 +96,12 @@
   if (newsToggle && newsDetails && newsToggleLabel) {
     const setNewsExpanded = (expanded) => {
       newsToggle.setAttribute('aria-expanded', String(expanded));
-      newsToggleLabel.textContent = expanded ? 'Hide project details' : 'View project details';
+      newsToggleLabel.textContent = expanded ? copy.hideDetails : copy.viewDetails;
       newsDetails.setAttribute('aria-hidden', String(!expanded));
       newsDetails.toggleAttribute('inert', !expanded);
     };
 
+    newsToggle.hidden = false;
     setNewsExpanded(false);
 
     newsToggle.addEventListener('click', () => {
@@ -92,7 +116,7 @@
     if (!menuButton || !menu) return;
     menuButton.setAttribute('aria-expanded', 'false');
     const label = menuButton.querySelector('.sr-only');
-    if (label) label.textContent = 'Open navigation';
+    if (label) label.textContent = copy.openNavigation;
     menu.dataset.open = 'false';
     document.body.classList.remove('menu-open');
   };
@@ -102,7 +126,7 @@
       const willOpen = menuButton.getAttribute('aria-expanded') !== 'true';
       menuButton.setAttribute('aria-expanded', String(willOpen));
       const label = menuButton.querySelector('.sr-only');
-      if (label) label.textContent = willOpen ? 'Close navigation' : 'Open navigation';
+      if (label) label.textContent = willOpen ? copy.closeNavigation : copy.openNavigation;
       menu.dataset.open = String(willOpen);
       document.body.classList.toggle('menu-open', willOpen);
     });
@@ -283,5 +307,15 @@
     });
 
     sections.forEach((section) => observer.observe(section));
+  }
+
+  const languageSwitch = document.querySelector('[data-language-switch]');
+  if (languageSwitch) {
+    const baseTarget = languageSwitch.dataset.languageTarget || languageSwitch.getAttribute('href') || '';
+    const syncLanguageTarget = () => {
+      languageSwitch.setAttribute('href', `${baseTarget}${window.location.hash}`);
+    };
+    syncLanguageTarget();
+    window.addEventListener('hashchange', syncLanguageTarget);
   }
 })();
