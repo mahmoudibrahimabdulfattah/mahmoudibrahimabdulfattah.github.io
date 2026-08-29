@@ -2941,20 +2941,6 @@ html[dir="rtl"] .primary-nav > a:not(.button):not(.language-switch)::after {
   transform-origin: right;
 }
 
-html[dir="rtl"] .news-toggle .icon {
-  right: auto;
-  left: 16px;
-}
-
-html[dir="rtl"] .news-toggle[aria-expanded="true"] {
-  inset: auto auto 8px 8px;
-}
-
-html[dir="rtl"] .news-toggle[aria-expanded="true"] .icon {
-  right: auto;
-  left: 12px;
-}
-
 html[dir="rtl"] .expertise-columns article {
   border-right: 0;
   border-inline-end: 1px solid var(--line);
