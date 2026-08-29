@@ -1146,7 +1146,7 @@ html[lang="en"] .language-switch[lang="ar"] {
 /* Cards share a row height so their tag rows line up. An open disclosure would
    drag that shared height up with it and leave the other three cards holding a
    void, so while it is open every card falls back to its own content height. */
-.featured-work:has(#news-shorts-details[aria-hidden="false"]) {
+.featured-work:has(#news-shorts-details[data-disclosure-ready][aria-hidden="false"]) {
   align-items: start;
 }
 
@@ -1371,6 +1371,17 @@ a.work-destination:focus-visible {
   transition: none;
 }
 
+/* The HTML fallback keeps disclosures open when JavaScript is unavailable.
+   In a JavaScript-capable page, collapse them before the external script
+   arrives so the first grid paint cannot inherit the full details height. */
+.js .work-more:not([data-disclosure-ready]),
+.js .news-details:not([data-disclosure-ready]) {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
+}
+
 .news-toggle {
   position: absolute;
   inset: 0;
@@ -1454,6 +1465,10 @@ a.work-destination:focus-visible {
   opacity: 0;
   visibility: hidden;
   transition: grid-template-rows .45s var(--ease), opacity .2s ease-out, visibility 0s .45s;
+}
+
+.news-details.is-initializing {
+  transition: none;
 }
 
 .news-details-list {

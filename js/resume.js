@@ -81,6 +81,7 @@
     // defaults. Collapse them only after this working control is available.
     workMore.classList.add('is-initializing');
     setWorkExpanded(false);
+    workMore.dataset.disclosureReady = 'true';
     workToggle.hidden = false;
     requestAnimationFrame(() => workMore.classList.remove('is-initializing'));
 
@@ -101,8 +102,11 @@
       newsDetails.toggleAttribute('inert', !expanded);
     };
 
-    newsToggle.hidden = false;
+    newsDetails.classList.add('is-initializing');
     setNewsExpanded(false);
+    newsDetails.dataset.disclosureReady = 'true';
+    newsToggle.hidden = false;
+    requestAnimationFrame(() => newsDetails.classList.remove('is-initializing'));
 
     newsToggle.addEventListener('click', () => {
       setNewsExpanded(newsToggle.getAttribute('aria-expanded') !== 'true');
